@@ -25,8 +25,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY /src/composer.json /var/www/html/
 COPY /src/composer.lock /var/www/html/
 
-# since .env variables aren't available by default to CLI scripts, we need to copy the .env file to the root directory so it can be loaded for them
-COPY .env /root/.env
+COPY .env /var/www/html/
 
 RUN composer install --no-interaction --no-ansi --no-scripts --no-progress --prefer-dist
 

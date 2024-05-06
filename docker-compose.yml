@@ -1,7 +1,7 @@
 services:
   nginx:
     image: nginx:alpine
-    container_name: nginx
+    container_name: safe-nginx
     ports:
       - "8080:80"
     volumes:
@@ -14,7 +14,7 @@ services:
   #Database Service
   db:
     image: mariadb
-    container_name: help-db-laravel
+    container_name: safe-db
     volumes:
       - ./db_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -22,15 +22,15 @@ services:
     ports:
       - "3310:3306"
     environment:
-      MARIADB_ROOT_PASSWORD: $SQL_ROOT
-      MARIADB_DATABASE: help
-      MARIADB_USER: $HELPMYSQL_USER
-      MYSQL_PASSWORD: $HELPMYSQL_PASSWORD
+      MARIADB_ROOT_PASSWORD: ${SQL_ROOT}
+      MARIADB_DATABASE: safe
+      MARIADB_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
       - app-network
   # Application Service
   web:
-    container_name: help-web-laravel
+    container_name: safe-web
     build: 
       context: .
       dockerfile: ./php.Dockerfile
@@ -46,7 +46,7 @@ services:
   #phpMyAdmin Service
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-laravel
+    container_name: safe-phpmyadmin
     ports:
       - "8085:80"
     environment:
