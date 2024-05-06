@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class GoogleLoginController extends Controller
 {
@@ -18,13 +20,25 @@ class GoogleLoginController extends Controller
 
     public function handleGoogleCallback()
     {
-        $googleUser = Socialite::driver('google')->stateless()->user();
-        $user = User::where('email', $googleUser->email)->first();
-        if (!$user) {
-            $user = User::create(['name' => $googleUser->name, 'email' => $googleUser->email]);
+        $google_user = Socialite::driver('google')->stateless()->user();
+
+        $user_name = $google_user->name;
+        $user_email = $google_user->email;
+
+        $domain = explode('@', $user_email);
+        $domain_name = $domain[1];
+
+        if ($domain_name != "provo.edu") {
+            Log::info("User with email $user_email attempted to login... rejected");
+            return redirect('/');
         }
 
-        Auth::login($user);
+        $user = User::where('email', $user_email)->first();
+        if (!$user) {
+            $user = User::create(['name' => $user_name, 'email' => $user_email]);
+        }
+
+        Auth::login($user, true);
 
         return redirect('/dashboard');
     }
