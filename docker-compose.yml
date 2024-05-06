@@ -1,0 +1,60 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - web
+    networks:
+      - app-network
+  #Database Service
+  db:
+    image: mariadb
+    container_name: help-db-laravel
+    volumes:
+      - ./db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    env_file: .env
+    ports:
+      - "3310:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: $SQL_ROOT
+      MARIADB_DATABASE: help
+      MARIADB_USER: $HELPMYSQL_USER
+      MYSQL_PASSWORD: $HELPMYSQL_PASSWORD
+    networks:
+      - app-network
+  # Application Service
+  web:
+    container_name: help-web-laravel
+    build: 
+      context: .
+      dockerfile: ./php.Dockerfile
+    volumes:
+      - ./src:/var/www/html
+      - /var/www/html/vendor
+      - ./session:/var/php/sessions/
+    env_file: .env
+    ports:
+      - "9000:80"
+    networks:
+      - app-network
+  #phpMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-laravel
+    ports:
+      - "8085:80"
+    environment:
+      UPLOAD_LIMIT: 300M
+    depends_on:
+      - db
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

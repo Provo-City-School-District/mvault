@@ -1,0 +1,5 @@
+/db_data
+.env
+src/vendor
+.DS_Store
+!.gitkeep
