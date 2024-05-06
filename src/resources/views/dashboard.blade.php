@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 	<body>
-	@foreach ($data as $dat)
-		<p>{{ $dat->ip_address; }}</p>
-	@endforeach
+		<a href=" {{ route('profile') }} ">Profile</a>
 	</body>
 </html>

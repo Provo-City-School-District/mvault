@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-	public function show()
+    public function show()
     {
-		return view('login');
+        if (Auth::check()) {
+            return redirect('/dashboard');
+        }
+
+        return view('login');
     }
 }
