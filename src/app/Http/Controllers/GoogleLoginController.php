@@ -26,6 +26,8 @@ class GoogleLoginController extends Controller
         $user_email = $google_user->email;
 
         $domain = explode('@', $user_email);
+        $account_username = strtolower($domain[0]);
+
         $domain_name = $domain[1];
 
         if ($domain_name != "provo.edu") {
@@ -35,11 +37,11 @@ class GoogleLoginController extends Controller
 
         $user = User::where('email', $user_email)->first();
         if (!$user) {
-            $user = User::create(['name' => $user_name, 'email' => $user_email]);
+            $user = User::create(['username' => $account_username, 'name' => $user_name, 'email' => $user_email]);
         }
 
         Auth::login($user, true);
 
-        return redirect('dashboard');
+        return redirect('profile');
     }
 }

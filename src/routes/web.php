@@ -11,6 +11,6 @@ Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::clas
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name("profile");
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'show'])->name("dashboard");
+    // Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'show'])->name("dashboard");
     Route::get('/search', [App\Http\Controllers\SearchController::class, 'show'])->name("search");
 });
