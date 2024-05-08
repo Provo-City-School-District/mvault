@@ -20,7 +20,7 @@ class GoogleLoginController extends Controller
 
     public function handleGoogleCallback()
     {
-        $google_user = Socialite::driver('google')->stateless()->user();
+        $google_user = Socialite::driver('google')->user();
 
         $user_name = $google_user->name;
         $user_email = $google_user->email;
@@ -40,6 +40,6 @@ class GoogleLoginController extends Controller
 
         Auth::login($user, true);
 
-        return redirect('/dashboard');
+        return redirect('dashboard');
     }
 }

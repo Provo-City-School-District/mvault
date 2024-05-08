@@ -10,7 +10,7 @@ Route::get('/google/redirect', [App\Http\Controllers\GoogleLoginController::clas
 Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name("profile");
-	Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'show'])->name("dashboard");
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name("profile");
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'show'])->name("dashboard");
     Route::get('/search', [App\Http\Controllers\SearchController::class, 'show'])->name("search");
 });
