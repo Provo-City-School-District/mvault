@@ -1,1 +1,1 @@
-<div>Copyright &copy Provo City School District 2024</div>
+<div>Copyright &copy Provo City School District {{ $year }}</div>
