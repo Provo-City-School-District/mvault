@@ -17,7 +17,7 @@ class SearchController extends Controller
         foreach ($asset_data as $asset) {
             $matching_site = DB::table('locations')->where('id', $asset->site)->first();
             $assets[] = [
-                'name' => $asset->name,
+                'model' => $asset->model,
                 'site_name' => $matching_site->display_name
             ];
         }

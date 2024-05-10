@@ -1,20 +1,20 @@
 services:
   nginx:
     image: nginx:alpine
-    container_name: safe-nginx
+    container_name: mvault-nginx
     ports:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
       - ./config/nginx/conf.d/:/etc/nginx/conf.d/
     depends_on:
-      - web
+      - app
     networks:
       - app-network
   #Database Service
   db:
     image: mariadb
-    container_name: safe-db
+    container_name: mvault-db
     volumes:
       - ./db_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -29,8 +29,8 @@ services:
     networks:
       - app-network
   # Application Service
-  web:
-    container_name: safe-web
+  app:
+    container_name: mvault-app
     build: 
       context: .
       dockerfile: ./php.Dockerfile
@@ -46,7 +46,7 @@ services:
   #phpMyAdmin Service
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: safe-phpmyadmin
+    container_name: mvault-phpmyadmin
     ports:
       - "8085:80"
     environment:

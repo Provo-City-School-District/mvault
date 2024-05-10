@@ -11,7 +11,7 @@
 
     @foreach ($assets as $asset)
     <tr>
-        <td>{{ $asset['name'] }}</td>
+        <td>{{ $asset['model'] }}</td>
         <td>{{ $asset['site_name'] }}</td>
     </tr>
     @endforeach

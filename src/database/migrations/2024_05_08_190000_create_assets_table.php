@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('company');
+            $table->string('model');
             $table->bigInteger('site')->unsigned();
             $table->foreign('site')->references('id')->on('locations');
+            $table->string('room');
+            $table->string('notes');
             $table->timestamps();
         });
     }

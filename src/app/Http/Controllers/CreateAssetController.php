@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Asset;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -20,10 +20,18 @@ class CreateAssetController extends Controller
 
     public function handleForm(Request $request)
     {
-        $name = $request->get("asset_name");
-        $site_number = $request->get("site");
-        $site = DB::table('locations')->where('site_number', $site_number)->first();
-        DB::insert('INSERT INTO assets (name, site) values (?, ?)', [$name, $site->id]);
+        
+        $asset = new Asset;
+        $asset->company = $request->get("company");
+        $asset->model = $request->get("model");
+
+        $site_number = $request->get("site_number");
+        $asset->site = DB::table('locations')->where('site_number', $site_number)->first()->id;
+        $asset->room = $request->get("room");
+
+        $asset->notes = $request->get("notes");
+        $asset->save();
+
         return redirect()->back();
     }
 }
