@@ -3,7 +3,7 @@ services:
     image: nginx:alpine
     container_name: mvault-nginx
     ports:
-      - "8080:80"
+      - "8081:80"
     volumes:
       - ./src:/var/www/html
       - ./config/nginx/conf.d/:/etc/nginx/conf.d/
@@ -20,7 +20,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file: .env
     ports:
-      - "3310:3306"
+      - "3311:3306"
     environment:
       MARIADB_ROOT_PASSWORD: ${SQL_ROOT}
       MARIADB_DATABASE: safe
@@ -31,7 +31,7 @@ services:
   # Application Service
   app:
     container_name: mvault-app
-    build: 
+    build:
       context: .
       dockerfile: ./php.Dockerfile
     volumes:
@@ -45,10 +45,10 @@ services:
       - app-network
   #phpMyAdmin Service
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin:latest
     container_name: mvault-phpmyadmin
     ports:
-      - "8085:80"
+      - "8086:80"
     environment:
       UPLOAD_LIMIT: 300M
     depends_on:
