@@ -1,5 +1,5 @@
 services:
-  nginx:
+  mvault-nginx:
     image: nginx:alpine
     container_name: mvault-nginx
     ports:
@@ -8,11 +8,11 @@ services:
       - ./src:/var/www/html
       - ./config/nginx/conf.d/:/etc/nginx/conf.d/
     depends_on:
-      - app
+      - mvault-app
     networks:
-      - app-network
+      - mvault-network
   #Database Service
-  db:
+  mvault-db:
     image: mariadb
     container_name: mvault-db
     volumes:
@@ -27,9 +27,9 @@ services:
       MARIADB_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
-      - app-network
+      - mvault-network
   # Application Service
-  app:
+  mvault-app:
     container_name: mvault-app
     build:
       context: .
@@ -42,9 +42,9 @@ services:
     ports:
       - "9000:80"
     networks:
-      - app-network
-  #phpMyAdmin Service
-  phpmyadmin:
+      - mvault-network
+  #mvault-phpmyadmin Service
+  mvault-phpmyadmin:
     image: phpmyadmin:latest
     container_name: mvault-phpmyadmin
     ports:
@@ -52,9 +52,9 @@ services:
     environment:
       UPLOAD_LIMIT: 300M
     depends_on:
-      - db
+      - mvault-db
     networks:
-      - app-network
+      - mvault-network
 networks:
-  app-network:
+  mvault-network:
     driver: bridge
