@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asset;
+use App\Models\Location;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +28,7 @@ class CreateAssetController extends Controller
         $asset->model = $request->get("model");
 
         $site_number = $request->get("site_number");
-        $asset->site = DB::table('locations')->where('site_number', $site_number)->first()->id;
+        $asset->site = Location::where('site_number', $site_number)->first()->id;
         $asset->room = $request->get("room");
 
         $asset->notes = $request->get("notes");
