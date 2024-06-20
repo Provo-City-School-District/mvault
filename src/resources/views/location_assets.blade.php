@@ -10,7 +10,7 @@
 
     @foreach ($assets as $asset)
     <tr>
-        <td>{{ $asset['model'] }}</td>
+        <td><a href="{{ route('view_asset', ['asset' => $asset->id]) }}">{{ $asset->model }}</a></td>
     </tr>
     @endforeach
 </table>

@@ -16,7 +16,7 @@ class CreateAssetController extends Controller
 {
     public function show()
     {
-        $sites = DB::select('SELECT display_name, site_number FROM locations ORDER BY display_name ASC');
+        $sites = Location::orderBy('display_name')->get();
         return view('create_asset', ['sites' => $sites]);
     }
 
