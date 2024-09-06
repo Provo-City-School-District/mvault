@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
+            $table->string('serial');
+            $table->string('barcode');
             $table->string('company');
             $table->string('model');
             $table->bigInteger('site')->unsigned();

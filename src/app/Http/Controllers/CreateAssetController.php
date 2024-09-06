@@ -24,6 +24,9 @@ class CreateAssetController extends Controller
     {
         
         $asset = new Asset;
+        $asset->serial = $request->get("serial");
+        $asset->barcode = $request->get("barcode");
+
         $asset->company = $request->get("company");
         $asset->model = $request->get("model");
 

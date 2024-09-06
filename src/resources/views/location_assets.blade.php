@@ -5,12 +5,16 @@
 
 <table>
     <tr>
-        <th>Asset Name</th>
+        <th>Serial</th>
+        <th>Barcode</th>
+        <th>Model</th>
     </tr>
 
     @foreach ($assets as $asset)
     <tr>
-        <td><a href="{{ route('view_asset', ['asset' => $asset->id]) }}">{{ $asset->model }}</a></td>
+        <td><a href="{{ route('view_asset', ['asset' => $asset->id]) }}">{{ $asset->serial }}</a></td>
+        <td>{{ $asset->barcode }}</td>
+        <td>{{ $asset->model }}</td>
     </tr>
     @endforeach
 </table>

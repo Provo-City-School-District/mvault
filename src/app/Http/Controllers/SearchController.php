@@ -13,15 +13,15 @@ class SearchController extends Controller
     public function show()
     {
         $assets = Asset::all();
-        $assets_parsed = [];
         
         foreach ($assets as $asset) {
             $matching_site = DB::table('locations')->where('id', $asset->site)->first();
-            $assets_parsed[] = [
-                'model' => $asset->model,
-                'site_name' => $matching_site->display_name
-            ];
+
+            // site_name doesn't exist until this, but this seems 
+            // like the cleanest way to get the data to the view
+            $asset->site_name = $matching_site->display_name;
         }
-        return view('search', ['assets' => $assets_parsed]);
+
+        return view('search', ['assets' => $assets]);
     }
 }
