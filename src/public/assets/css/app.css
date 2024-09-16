@@ -41,3 +41,7 @@ footer {
 table, th, td {
     border: 1px solid black;
 }
+
+#login-error-container {
+    color: red;
+}

@@ -20,7 +20,11 @@ class GoogleLoginController extends Controller
 
     public function handleGoogleCallback()
     {
-        $google_user = Socialite::driver('google')->stateless()->user();
+        try {
+            $google_user = Socialite::driver('google')->stateless()->user();
+        } catch (\Exception $e) {
+            return redirect('/')->withErrors(['login' => 'Failed to login']);
+        }
 
         $user_name = $google_user->name;
         $user_email = $google_user->email;
