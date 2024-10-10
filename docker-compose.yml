@@ -48,7 +48,7 @@ services:
     image: phpmyadmin:latest
     container_name: mvault-phpmyadmin
     ports:
-      - "8086:80"
+      - "8070:80"
     environment:
       UPLOAD_LIMIT: 300M
     depends_on:
