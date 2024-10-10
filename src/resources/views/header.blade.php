@@ -1,3 +1,4 @@
+<header id="mainHeader">
     <h1 id="siteTitle">Maintenance Vault</h1>
     <nav class="topnav">
         <a href=" {{ route('create_asset') }} ">Create Asset</a>
