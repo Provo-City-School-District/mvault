@@ -50,6 +50,7 @@ services:
     ports:
       - "8070:80"
     environment:
+      PMA_HOST: mvault-db
       UPLOAD_LIMIT: 300M
     depends_on:
       - mvault-db
