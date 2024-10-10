@@ -16,22 +16,26 @@ body {
 Header Styles
 ==========================================================================================*/
 #mainHeader {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
     background-color: #f4f4f4;
     color: #333;
-    /* padding-top: 20px; */
-    /* padding-bottom: 20px; */
-    /* text-align: center; */
     border-bottom: 1px solid #ccc;
-    display: grid;
-    grid-template-columns: 350px 1fr;
-    /* justify-items: center; */
-    align-items: center;
+
 }
 
 #siteTitle {
     font-size: 2em;
     margin: 0;
     padding: 0;
+}
+
+@media (min-width: 900px) {
+    #mainHeader {
+        grid-template-columns: 350px 1fr;
+        align-items: center;
+    }
 }
 
 /*==========================================
