@@ -8,4 +8,4 @@
         <a href=" {{ route('logout') }} ">Logout</a>
     </nav>
 </header>
-<main>
+<main id="mainContent">
