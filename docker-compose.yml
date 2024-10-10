@@ -3,7 +3,7 @@ services:
     image: nginx:alpine
     container_name: mvault-nginx
     ports:
-      - "8081:80"
+      - "8096:80"
     volumes:
       - ./src:/var/www/html
       - ./config/nginx/conf.d/:/etc/nginx/conf.d/
