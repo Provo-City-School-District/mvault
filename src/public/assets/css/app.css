@@ -84,8 +84,7 @@ Main Nav
 }
 
 .topnav a {
-    /* change header anchor color once we have a variable. */
-    /* color: ; */
+    color: var(--theme-black);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
