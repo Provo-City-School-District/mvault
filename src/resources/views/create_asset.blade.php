@@ -6,8 +6,9 @@
 <form method="POST" action="/create_asset">
     @csrf
 
-    <h2>General Information</h2>
+
     <div id="information">
+        <h2>General Information</h2>
         <label for="serial">Serial:</label>
         <input type="text" id="serial" name="serial">
 
@@ -21,8 +22,9 @@
         <input type="text" id="model" name="model">
     </div>
 
-    <h2>Location</h2>
+
     <div id="location">
+        <h2>Location</h2>
         <label for="site_number">Site:</label>
         <select id="site_number" name="site_number">
             @foreach ($sites as $site)
@@ -35,8 +37,9 @@
     </div>
 
 
-    <h2>Extra</h2>
+
     <div id="extra">
+        <h2>Extra</h2>
         <label for="notes">Additional notes:</label>
         <input type="text" id="notes" name="notes">
     </div>
