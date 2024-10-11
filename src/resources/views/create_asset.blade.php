@@ -41,6 +41,6 @@
         <input type="text" id="notes" name="notes">
     </div>
 
-    <input type="submit" value="Create Asset">
+    <input type="submit" class="button" value="Create Asset">
 </form>
 @endsection
