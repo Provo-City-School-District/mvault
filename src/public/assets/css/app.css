@@ -11,16 +11,17 @@ body {
 }
 
 #login-error-container {
-    color: red;
+    color: var(--danger-color);
 }
 
 a {
     text-decoration: none;
-    color: blue;
+    color: var(--link-color);
 }
 
 a:hover {
-    color: #04AA6D;
+    color: var(--link-hover-color);
+    text-decoration: underline;
 }
 
 /*========================================================================================== 
