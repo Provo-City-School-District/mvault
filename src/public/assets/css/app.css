@@ -1,9 +1,6 @@
 @import url('reset.css?v=2.0');
+@import url('typography.css?v=0.0.1');
 
-@font-face {
-    font-family: "Campton-Medium";
-    src: url('/assets/fonts/CamptonMedium/font.woff2');
-}
 
 /*========================================================================================== 
 General Styles / Utility classes
