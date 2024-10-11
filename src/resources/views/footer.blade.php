@@ -1,4 +1,3 @@
-</main>
 <footer>
     @if ($year == "2024")
     <div>Copyright &copy {{ $year }} Provo City School District</div>

@@ -9,7 +9,9 @@
 <body>
     @include('header')
 
+    <main id="mainContent">
     @yield('content')
+    </main>
 
     @include('footer')
     <script src="{{ asset('assets/js/main.js') }}"></script>

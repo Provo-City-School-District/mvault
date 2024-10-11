@@ -20,7 +20,7 @@
     <div id="login-wrapper">
         <h1>Login to Mvault</h1>
         <a href="{{ route('google.redirect') }}" class="button">Login with Google</a>
-        <p>This system is intended for authorized users only. Any attempts will be logged.</p>
+        <p>This system is intended for authorized users only. Any login attempts will be stored.</p>
     </div>
     @include('footer')
 </body>

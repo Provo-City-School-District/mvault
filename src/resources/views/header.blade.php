@@ -13,4 +13,3 @@
     </nav>
     @endauth
 </header>
-<main id="mainContent">
