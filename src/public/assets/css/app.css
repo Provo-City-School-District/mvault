@@ -57,7 +57,6 @@ Main Nav
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    /* padding-right: 5em; */
     position: relative;
 }
 
@@ -82,9 +81,6 @@ Main Nav
 
 .topnav .icon {
     display: none;
-
-
-    /* padding: 14px 16px; */
     font-size: 24px;
     cursor: pointer;
 }
@@ -118,11 +114,6 @@ Main Nav
     .topnav.responsive a {
         display: block;
         text-align: left;
-    }
-
-    .topnav.responsive a:first-child {
-        margin-top: 50px;
-        /* Adjust this value to create space for the icon */
     }
 }
 
