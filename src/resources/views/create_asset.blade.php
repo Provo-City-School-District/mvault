@@ -6,7 +6,7 @@
 <form method="POST" action="/create_asset">
     @csrf
 
-    <h3>General Information</h3>
+    <h2>General Information</h2>
     <div id="information">
         <label for="serial">Serial:</label>
         <input type="text" id="serial" name="serial">
@@ -21,7 +21,7 @@
         <input type="text" id="model" name="model">
     </div>
 
-    <h3>Location</h3>
+    <h2>Location</h2>
     <div id="location">
         <label for="site_number">Site:</label>
         <select id="site_number" name="site_number">
@@ -35,7 +35,7 @@
     </div>
 
 
-    <h3>Extra</h3>
+    <h2>Extra</h2>
     <div id="extra">
         <label for="notes">Additional notes:</label>
         <input type="text" id="notes" name="notes">
