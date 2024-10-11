@@ -1,6 +1,6 @@
-@import url('reset.css?v=2.0');
-@import url('variables-common.css?v=0.0.1');
-@import url('typography.css?v=0.0.1');
+@import url('reset.css');
+@import url('variables-common.css');
+@import url('typography.css');
 
 
 /*========================================================================================== 
@@ -24,6 +24,23 @@ a:hover {
     text-decoration: underline;
 }
 
+.button {
+    background-color: var(--button-background);
+    color: var(--theme-white);
+    border: none;
+    padding: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    grid-column: span 2;
+    font-size: 1em;
+    margin: 1em 0;
+}
+
+.button a {
+    color: var(--theme-white);
+    text-decoration: none;
+}
+
 /*========================================================================================== 
 Header Styles
 ==========================================================================================*/
@@ -34,7 +51,6 @@ Header Styles
     background-color: #f4f4f4;
     color: #333;
     border-bottom: 1px solid #ccc;
-
 }
 
 @media (min-width: 900px) {

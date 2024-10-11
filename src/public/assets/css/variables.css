@@ -1,5 +1,8 @@
 :root {
-    --primary-color: #007bff;
+	--theme-tertiary: #df6d1b;
+	--theme-secondary: #2c4938;
+	--theme-primary: #1c2f4a;
+    --button-background: var(--theme-primary);
     --secondary-color: #6c757d;
     --success-color: #28a745;
     --info-color: #17a2b8;
@@ -7,4 +10,5 @@
     --danger-color: #dc3545;
     --link-color: #007bff;
     --link-hover-color: #0056b3;
+    --theme-white: #ebebeb;
 }
