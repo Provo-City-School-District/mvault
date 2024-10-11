@@ -1,5 +1,5 @@
 <header id="mainHeader">
-    <h1 id="siteTitle">Maintenance Vault</h1>
+    <img src="{{ asset('assets/img/pcsd-logo-website-header-160w.png') }}" alt="siteLogo" id="siteLogo">
     @auth
     <nav class="topnav" id="myTopnav">
         <a href=" {{ route('create_asset') }} ">Create Asset</a>
