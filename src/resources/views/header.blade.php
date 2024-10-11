@@ -1,12 +1,15 @@
 <header id="mainHeader">
     <h1 id="siteTitle">Maintenance Vault</h1>
     @auth
-    <nav class="topnav">
+    <nav class="topnav" id="myTopnav">
         <a href=" {{ route('create_asset') }} ">Create Asset</a>
         <a href=" {{ route('all_locations') }} ">Locations</a>
         <a href=" {{ route('search') }} ">Search</a>
         <a href=" {{ route('profile') }} ">Profile</a>
         <a href=" {{ route('logout') }} ">Logout</a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+            &#9776;
+        </a>
     </nav>
     @endauth
 </header>

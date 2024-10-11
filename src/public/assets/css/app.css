@@ -6,7 +6,7 @@
 }
 
 /*========================================================================================== 
-General Styles
+General Styles / Utility classes
 ==========================================================================================*/
 body {
     font-family: "Campton-Medium";
@@ -54,16 +54,17 @@ Header Styles
 /*==========================================
 Main Nav
 ===========================================*/
-/* inspired by - https://www.w3schools.com/howto/howto_js_topnav.asp */
 .topnav {
     overflow: hidden;
-    width: max-content;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    /* padding-right: 5em; */
+    position: relative;
 }
 
 .topnav a {
-    float: left;
-    color: black;
+    /* change header anchor color once we have a variable. */
+    /* color: ; */
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -80,19 +81,67 @@ Main Nav
     color: white;
 }
 
-footer {
-    margin-top: 20px;
+.topnav .icon {
+    display: none;
+
+
+    /* padding: 14px 16px; */
+    font-size: 24px;
+    cursor: pointer;
 }
 
-table,
-th,
-td {
-    border: 1px solid black;
+@media screen and (max-width: 600px) {
+    .topnav {
+        width: 100%;
+        align-items: center;
+    }
+
+    .topnav a {
+        display: none;
+    }
+
+    .topnav a.icon {
+        display: block;
+        text-align: center;
+    }
+
+    .topnav.responsive {
+        position: relative;
+        flex-direction: column;
+    }
+
+    .topnav.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        display: block;
+        text-align: left;
+    }
+
+    .topnav.responsive a:first-child {
+        margin-top: 50px;
+        /* Adjust this value to create space for the icon */
+    }
 }
 
-#login-error-container {
-    color: red;
+@media screen and (min-width: 601px) {
+    .topnav {
+        flex-direction: row;
+    }
+
+    .topnav a {
+        display: block;
+    }
+
+    .topnav .icon {
+        display: none;
+    }
 }
+
+
 
 /*========================================================================================== 
 Content Area Styles
