@@ -3,6 +3,9 @@
 
 <head>
     <title>Maintenance Vault</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/variables-common.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/typography.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
 
@@ -10,7 +13,7 @@
     @include('header')
 
     <main id="mainContent">
-    @yield('content')
+        @yield('content')
     </main>
 
     @include('footer')
