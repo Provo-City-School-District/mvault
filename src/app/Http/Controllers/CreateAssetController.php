@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
- 
+
 class CreateAssetController extends Controller
 {
     public function show()
@@ -22,7 +22,7 @@ class CreateAssetController extends Controller
 
     public function handleForm(Request $request)
     {
-        
+
         $asset = new Asset;
         $asset->serial = $request->get("serial");
         $asset->barcode = $request->get("barcode");
@@ -35,6 +35,12 @@ class CreateAssetController extends Controller
         $asset->room = $request->get("room");
 
         $asset->notes = $request->get("notes");
+        $asset->category = $request->get("category");
+        $asset->purchase_date = $request->get("purchase_date");
+        $asset->purchase_price = $request->get("purchase_price");
+        $asset->vendor = $request->get("vendor");
+
+
         $asset->save();
 
         return redirect()->back();

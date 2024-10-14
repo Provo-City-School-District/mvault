@@ -21,6 +21,11 @@ return new class extends Migration
             $table->foreign('site')->references('id')->on('locations');
             $table->string('room');
             $table->string('notes');
+            $table->string('category');
+            $table->string('purchase_date');
+            $table->string('purchase_price');
+            $table->string('vendor');
+
             $table->timestamps();
         });
     }
