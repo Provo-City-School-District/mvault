@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Force HTTPS in non-local environments
         if (config('app.env') !== 'local') {
-            Facades\URL::forceScheme('https'); // Force HTTPS scheme for all URLs
+            Facades\URL::forceScheme('https');
         }
     }
 }
