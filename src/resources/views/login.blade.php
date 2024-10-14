@@ -3,8 +3,8 @@
 
 <head>
     <title>Maintenance Vault</title>
-    <link rel="stylesheet" href="{{url('assets/css/app.css')}}">
-    <link rel="stylesheet" href="{{url('assets/css/login.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
 </head>
 @include('header')
 
