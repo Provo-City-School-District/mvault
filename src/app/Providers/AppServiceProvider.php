@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\URL; // Import the URL facade
 use Illuminate\Support\Facades;
 use Illuminate\Support\ServiceProvider;
 use App\View\Composers\FooterComposer;
