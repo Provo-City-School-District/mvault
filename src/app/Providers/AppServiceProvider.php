@@ -4,7 +4,6 @@ namespace App\Providers;
 
 
 use Illuminate\Support\Facades;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use App\View\Composers\FooterComposer;
 
@@ -27,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Force HTTPS in non-local environments
         if (config('app.env') !== 'local') {
-            URL::forceScheme('https'); // Force HTTPS scheme for all URLs
+            Facades\URL::forceScheme('https'); // Force HTTPS scheme for all URLs
         }
     }
 }
