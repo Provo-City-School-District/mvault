@@ -47,7 +47,7 @@
         <label for="purchase_date">Purchase Date:</label>
         <input type="date" id="purchase_date" name="purchase_date">
 
-        <label for="expected_lifespan">Warranty Expiration:</label>
+        <label for="expected_lifespan">Expected Lifespan:</label>
         <input type="number" id="expected_lifespan" name="expected_lifespan">
     </div>
 
