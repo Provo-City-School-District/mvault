@@ -20,6 +20,9 @@
 
         <label for="model">Model:</label>
         <input type="text" id="model" name="model">
+
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category">
     </div>
 
 
@@ -36,7 +39,17 @@
         <input type="text" id="room" name="room">
     </div>
 
+    <div id="purchasing">
+        <h2>Purchasing</h2>
+        <label for="program">Program:</label>
+        <input type="text" id="program" name="program">
 
+        <label for="purchase_date">Purchase Date:</label>
+        <input type="date" id="purchase_date" name="purchase_date">
+
+        <label for="expected_lifespan">Warranty Expiration:</label>
+        <input type="number" id="expected_lifespan" name="expected_lifespan">
+    </div>
 
     <div id="extra">
         <h2>Extra</h2>

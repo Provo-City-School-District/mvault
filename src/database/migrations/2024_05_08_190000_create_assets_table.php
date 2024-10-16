@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('program');
             $table->string('category');
             $table->string('notes');
-            $table->string('purchase_date');
+            $table->date('purchase_date');
             $table->integer('expected_lifespan');
 
 
