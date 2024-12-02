@@ -1,5 +1,6 @@
 /db_data
 .env
 src/vendor
+src/public/info.php
 .DS_Store
 !.gitkeep

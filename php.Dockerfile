@@ -1,4 +1,4 @@
-FROM php:8.3.4-fpm
+FROM php:8.4-fpm
 
 # Copy custom php config
 COPY config/customphp.ini /usr/local/etc/php/conf.d/
