@@ -20,7 +20,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file: .env
     ports:
-      - "3334:3306"
+      - "3340:3306"
     environment:
       MARIADB_ROOT_PASSWORD: ${SQL_ROOT}
       MARIADB_DATABASE: safe
