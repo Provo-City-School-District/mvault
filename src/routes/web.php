@@ -11,12 +11,13 @@ Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::clas
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name("profile");
+
     Route::get('/create_asset', [App\Http\Controllers\CreateAssetController::class, 'show'])->name("create_asset");
     Route::post('/create_asset', [App\Http\Controllers\CreateAssetController::class, 'handleForm']);
+
     Route::get('/all_locations', [App\Http\Controllers\AllLocationsController::class, 'show'])->name("all_locations");
 
-    Route::get('/view_asset/{asset}', [App\Http\Controllers\ViewAssetController::class, 'show'])->name("view_asset");
-
+    Route::get('/edit_asset/{asset}', [App\Http\Controllers\EditAssetController::class, 'show'])->name("edit_asset");
 
     Route::get('/location_assets/{location}', [App\Http\Controllers\LocationAssetsController::class, 'show'])->name("location_assets");
 

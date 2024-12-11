@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ViewAssetController extends Controller
+class EditAssetController extends Controller
 {
     public function show(Request $request)
     {
