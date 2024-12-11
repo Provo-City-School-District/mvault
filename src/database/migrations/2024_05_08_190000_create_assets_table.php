@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('notes');
             $table->date('purchase_date');
             $table->integer('expected_lifespan');
+            $table->timestamp('last_validated')->default(DB::raw('TIMESTAMP(0)'));
 
 
             $table->timestamps();

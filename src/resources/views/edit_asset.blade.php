@@ -65,7 +65,10 @@
             <input type="text" id="notes" name="notes" value={{ $asset->notes }}>
         </div>
 
-        <input type="submit" class="button" value="Update Asset">
+        <div id="inventory">
+            <p>Last validated:</p> {{ $asset->last_validated }}
+            <input type="submit" class="button" value="Update Asset">
+        </div>
     </div>
 </form>
 @endsection
