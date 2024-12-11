@@ -16,11 +16,8 @@ class LocationAssetsController extends Controller
     {
         $location_number = $request->location;
         $location_data = Location::where('site_number', $location_number)->first();
-
-        $user_data = Auth::user();
         
         $location_name = $location_data["display_name"];
-
         $assets = Asset::where('site', $location_data["id"])->get();
 
         return view('location_assets', ['location_name' => $location_name, 'assets' => $assets]);

@@ -16,6 +16,6 @@ class EditAssetController extends Controller
     {
         $asset_id = $request->asset;
         $asset = Asset::where('id', $asset_id)->get()->first();
-        return view('view_asset', ['asset' => $asset]);
+        return view('edit_asset', ['asset' => $asset]);
     }
 }
