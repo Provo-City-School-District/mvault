@@ -1,23 +1,26 @@
 @extends('base')
 
 @section('content')
-<h1>Search (all assets for now)</h1>
+@foreach ($errors->all() as $error)
 
-<table>
-    <tr>
-        <th>Serial</th>
-        <th>Barcode</th>
-        <th>Name</th>
-        <th>Location</th>
-    </tr>
+  <div class="error-container">{{ $error }}</div>
 
-    @foreach ($assets as $asset)
-    <tr>
-        <td>{{ $asset->serial }}</td>
-        <td>{{ $asset->barcode }}</td>
-        <td>{{ $asset->model }}</td>
-        <td>{{ $asset->site_name}} | {{ $asset->room }}</td>
-    </tr>
-    @endforeach
-</table>
+@endforeach
+<h1>Search</h1>
+<form method="POST" action="/search">
+    @csrf
+    <div>
+        <label for="search_by">Search By:</label>
+        <select id="search_by" name="search_by">
+            <option value="barcode_serial">Barcode/Serial</option>
+            <option value="barcode">Barcode</option>
+            <option value="serial">Serial</option>
+            <option value="location">Location</option>
+        </select>
+
+        <label for="search_query">Barcode/Serial:</label>
+        <input type="text" id="search_query" name="search_query">
+    </div>
+    <input type="submit" class="button" value="Search">
+</form>
 @endsection

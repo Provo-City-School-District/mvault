@@ -13,7 +13,7 @@
 
 <body>
     @if ($errors->has('login'))
-    <div id="login-error-container">
+    <div class="error-container">
         <strong>
             {{ $errors->first('login') }}
         </strong>
