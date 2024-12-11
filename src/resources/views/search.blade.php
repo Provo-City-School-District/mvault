@@ -7,7 +7,7 @@
 
 @endforeach
 <h1>Search</h1>
-<form method="POST" action="/search">
+<form id="search-form" method="POST" action={{ route('search.form') }}>
     @csrf
     <div>
         <label for="search_by">Search By:</label>
