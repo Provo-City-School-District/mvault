@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/all_locations', [App\Http\Controllers\AllLocationsController::class, 'show'])->name("all_locations");
 
     Route::get('/edit_asset/{asset}', [App\Http\Controllers\EditAssetController::class, 'show'])->name("edit_asset");
+    Route::post('/update_asset', [App\Http\Controllers\EditAssetController::class, 'handleForm'])->name("update_asset");
 
     Route::get('/location_assets/{location}', [App\Http\Controllers\LocationAssetsController::class, 'show'])->name("location_assets");
 
