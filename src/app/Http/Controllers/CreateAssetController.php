@@ -38,7 +38,7 @@ class CreateAssetController extends Controller
         $asset->purchase_date = $request->get("purchase_date");
         $asset->expected_lifespan = $request->get("expected_lifespan");
 
-        $asset->notes = $request->get("notes");
+        $asset->notes = $request->get("notes") ?: "";
         $asset->save();
 
         return redirect()->back();
