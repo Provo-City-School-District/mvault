@@ -3,16 +3,14 @@
 
 <head>
     <title>Maintenance Vault</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/reset.css') }}?v={{ env('ASSET_VERSION') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/variables-common.css') }}?v={{ env('ASSET_VERSION') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/typography.css') }}?v={{ env('ASSET_VERSION') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}?v={{ env('ASSET_VERSION') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}?v={{ env('ASSET_VERSION') }}">
 </head>
 
 <body>
     @include('header')
 
-    <main id="mainContent">
+    <main id="mainContent" class="p-6">
         @yield('content')
     </main>
 

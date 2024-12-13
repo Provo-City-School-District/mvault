@@ -6,7 +6,7 @@
   <div class="error-container">{{ $error }}</div>
 
 @endforeach
-<h1>Search</h1>
+<h1 class="text-3xl">Search</h1>
 <form id="search-form" method="POST" action={{ route('search.form') }}>
     @csrf
     <div>
