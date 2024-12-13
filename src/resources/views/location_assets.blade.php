@@ -8,18 +8,28 @@
         <tr>
             <th class="bg-blue-100 border px-8 py-4">Serial</th>
             <th class="bg-blue-100 border px-8 py-4">Barcode</th>
+            <th class="bg-blue-100 border px-8 py-4">Company</th>
             <th class="bg-blue-100 border px-8 py-4">Model</th>
+            <th class="bg-blue-100 border px-8 py-4">Location</th>
+            <th class="bg-blue-100 border px-8 py-4">Category</th>
+            <th class="bg-blue-100 border px-8 py-4">Program/Department</th>
+            <th class="bg-blue-100 border px-8 py-4">Purchase Date</th>
         </tr>
     </thead>
 
     <tbody>
-    @foreach ($assets as $asset)
-    <tr class="hover:bg-gray-50">
-        <td class="border px-8 py-4"><a href="{{ route('edit_asset', ['asset' => $asset->id]) }}">{{ $asset->serial }}</a></td>
-        <td class="border px-8 py-4">{{ $asset->barcode }}</td>
-        <td class="border px-8 py-4">{{ $asset->model }}</td>
-    </tr>
-    @endforeach
+        @foreach ($assets as $asset)
+        <tr class="hover:bg-gray-50">
+            <td class="border px-8 py-4"><a href="{{ route('edit_asset', ['asset' => $asset->id]) }}">{{ $asset->serial }}</a></td>
+            <td class="border px-8 py-4">{{ $asset->barcode }}</td>
+            <td class="border px-8 py-4">{{ $asset->company }}</td>
+            <td class="border px-8 py-4">{{ $asset->model }}</td>
+            <td class="border px-8 py-4">{{ $asset->room }}</td>
+            <td class="border px-8 py-4">{{ $asset->category }}</td>
+            <td class="border px-8 py-4">{{ $asset->program }}</td>
+            <td class="border px-8 py-4">{{ $asset->purchase_date }}</td>
+        </tr>
+        @endforeach
     </tbody>
 </table>
 
