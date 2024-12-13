@@ -21,6 +21,16 @@ RUN chmod 644 /usr/local/share/ca-certificates/ckroot.crt && update-ca-certifica
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+#COPY /src/tailwindcss /var/www/html/tailwindcss
+#RUN chmod +x /var/www/html/tailwindcss
+
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    npm
+RUN npm install npm@latest -g && \
+    npm install n -g && \
+    n latest
+
 # Copy in Composer config
 COPY /src/composer.json /var/www/html/
 COPY /src/composer.lock /var/www/html/
@@ -28,4 +38,4 @@ COPY /src/composer.lock /var/www/html/
 COPY .env /var/www/html/
 
 RUN composer install --no-interaction --no-ansi --no-scripts --no-progress --prefer-dist
-
+RUN npm install -D tailwindcss

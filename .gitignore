@@ -4,3 +4,4 @@ src/vendor
 src/public/info.php
 .DS_Store
 !.gitkeep
+node_modules/
