@@ -30,7 +30,7 @@
             <label for="site_number">Site:</label>
             <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5" id="site_number" name="site_number">
                 @foreach ($sites as $site)
-                <option class="value="{{ $site->site_number }}">{{ $site->display_name }}</option>
+                <option value="{{ $site->site_number }}">{{ $site->display_name }}</option>
                 @endforeach
             </select>
 
