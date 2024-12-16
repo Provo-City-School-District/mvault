@@ -1,7 +1,12 @@
 @extends('base')
 
 @section('content')
-<link rel="stylesheet" href="{{ url('assets/css/create_asset.css') }}">
+@if (session('status'))
+    <div>
+        {{ session('status') }}
+    </div>
+@endif
+
 <h1 class="text-3xl mb-10">Create Asset</h1>
 <form method="POST" action="{{ route('create_asset') }}">
     @csrf

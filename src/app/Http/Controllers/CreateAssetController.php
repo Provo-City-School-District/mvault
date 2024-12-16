@@ -41,6 +41,6 @@ class CreateAssetController extends Controller
         $asset->notes = $request->get("notes") ?: "";
         $asset->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('status', 'Asset has been successfully created');
     }
 }
