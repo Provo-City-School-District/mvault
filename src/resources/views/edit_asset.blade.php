@@ -9,7 +9,7 @@
 
 <form method="POST" action="{{ route('update_asset') }}"> 
     @csrf
-    <input type="hidden" name="id" value={{ $asset->id }}>
+    <input type="hidden" name="id" value="{{ $asset->id }}">
     <div class="asset-container">
         <h2 class="text-2xl">General Information</h2>
         <div class="grid grid-cols-4 gap-4 mb-10">
