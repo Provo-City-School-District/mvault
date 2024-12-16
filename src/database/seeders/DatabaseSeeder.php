@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -51,12 +52,34 @@ class DatabaseSeeder extends Seeder
             ["1897", "Technology"],
             ["510", "eSchool"]
         ];
-
         foreach ($location_data as $location) {
-            DB::table('locations')->insert([
-                'site_number' => $location[0],
+            // Original code. Insert location
+            // DB::table('locations')->insert([
+            //     'site_number' => $location[0],
+            //     'display_name' => $location[1]
+            // ]); 
+            // Insert location and get the inserted ID so we can seed test assets
+            $locationId = DB::table('locations')->insertGetId([
+                'site_number' => $location[0], // Insert site_number
                 'display_name' => $location[1]
             ]);
+            // Insert asset for each location
+            for ($i = 1; $i < 10; $i++) {
+                DB::table('assets')->insert([
+                    'serial' => Str::random(10),
+                    'barcode' => Str::random(10),
+                    'company' => 'Company ' . chr(65 + $i),
+                    'model' => 'Model ' . chr(88 + $i),
+                    'site' => $locationId,
+                    'room' => 'Room ' . (100 + $i),
+                    'program' => 'Program ' . chr(65 + $i),
+                    'category' => 'Category ' . chr(65 + $i),
+                    'notes' => 'Test notes',
+                    'purchase_date' => now(),
+                    'expected_lifespan' => 5 + $i,
+                    'last_validated' => now(),
+                ]);
+            }
         }
     }
 }
