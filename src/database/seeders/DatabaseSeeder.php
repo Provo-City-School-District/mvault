@@ -72,7 +72,6 @@ class DatabaseSeeder extends Seeder
                     'model' => 'Model ' . chr(88 + $i),
                     'site' => $locationId,
                     'room' => 'Room ' . (100 + $i),
-                    'program' => 'Program ' . chr(65 + $i),
                     'category' => 'Category ' . chr(65 + $i),
                     'purchase_date' => now(),
                     'expected_lifespan_seconds' => 5 + $i,
@@ -106,7 +105,7 @@ class DatabaseSeeder extends Seeder
             "Wall Repair"
         ];
 
-        $i = 30;
+        $i = 0;
         foreach ($category_data as $category) {
             DB::table('asset_categories')->insert([
                 'id' => $i,
