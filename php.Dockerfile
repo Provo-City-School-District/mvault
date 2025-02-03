@@ -27,7 +27,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN apt-get update && apt-get install -y \
     software-properties-common \
     npm
-RUN npm install npm@latest -g && \
+RUN npm install npm@9.2 -g && \
     npm install n -g && \
     n latest
 

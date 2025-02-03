@@ -74,12 +74,45 @@ class DatabaseSeeder extends Seeder
                     'room' => 'Room ' . (100 + $i),
                     'program' => 'Program ' . chr(65 + $i),
                     'category' => 'Category ' . chr(65 + $i),
-                    'notes' => 'Test notes',
                     'purchase_date' => now(),
-                    'expected_lifespan' => 5 + $i,
+                    'expected_lifespan_seconds' => 5 + $i,
                     'last_validated' => now(),
                 ]);
             }
+        }
+
+
+        $category_data = [
+            "Building Automation",
+            "Carpentry",
+            "Ceilings",
+            "Custodial",
+            "Doors and Hardware",
+            "Electrical",
+            "Fire Protection",
+            "Flooring",
+            "Food Services",
+            "Glass/Window Repair",
+            "Grounds",
+            "Heating/Ventilation/Air Conditioning",
+            "Housekeeping",
+            "Lighting",
+            "Moving/Delivery",
+            "Painting",
+            "Pest Control",
+            "Plumbing",
+            "Roofing",
+            "Vehicle Maintenance",
+            "Wall Repair"
+        ];
+
+        $i = 1;
+        foreach ($category_data as $category) {
+            DB::table('asset_categories')->insert([
+                'id' => $i,
+                'display_name' => $category
+            ]);
+            $i++;
         }
     }
 }

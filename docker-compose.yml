@@ -23,7 +23,7 @@ services:
       - "3340:3306"
     environment:
       MARIADB_ROOT_PASSWORD: ${SQL_ROOT}
-      MARIADB_DATABASE: safe
+      MARIADB_DATABASE: ${DB_DATABASE}
       MARIADB_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
