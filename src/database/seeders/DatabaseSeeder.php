@@ -66,17 +66,22 @@ class DatabaseSeeder extends Seeder
             // Insert asset for each location
             for ($i = 1; $i < 10; $i++) {
                 DB::table('assets')->insert([
-                    'serial' => Str::random(10),
-                    'barcode' => Str::random(10),
-                    'company' => 'Company ' . chr(65 + $i),
+                    'name' => Str::random(10),
+                    'brand' => 'Brand ' . chr(65 + $i),
+                    'make' => 'Make ' . chr(65 + $i),
                     'model' => 'Model ' . chr(88 + $i),
+                    'serial' => Str::random(10),
+                    // 'barcode' => Str::random(10),
+
                     'site' => $locationId,
                     'room' => 'Room ' . (100 + $i),
+
                     'program' => 'Program ' . chr(65 + $i),
                     'category' => 'Category ' . chr(65 + $i),
                     'notes' => 'Test notes',
                     'purchase_date' => now(),
                     'expected_lifespan' => 5 + $i,
+                    'replacement_cost' => 100 + $i,
                     'last_validated' => now(),
                 ]);
             }
