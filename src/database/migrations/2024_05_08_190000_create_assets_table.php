@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('brand');
-            $table->string('make');
-            $table->string('model');
             $table->string('serial');
+            $table->string('barcode');
+            $table->string('company');
+            $table->string('model');
             $table->bigInteger('site')->unsigned();
             $table->foreign('site')->references('id')->on('locations');
             $table->string('room');
@@ -26,8 +25,8 @@ return new class extends Migration
             $table->string('notes');
             $table->date('purchase_date');
             $table->integer('expected_lifespan');
-            $table->integer('replacement_cost');
             $table->timestamp('last_validated')->default(DB::raw('TIMESTAMP(0)'));
+
 
             $table->timestamps();
         });
