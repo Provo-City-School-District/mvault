@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
             "Wall Repair"
         ];
 
-        $i = 1;
+        $i = 30;
         foreach ($category_data as $category) {
             DB::table('asset_categories')->insert([
                 'id' => $i,

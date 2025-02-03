@@ -34,7 +34,6 @@ return new class extends Migration
             $table->bigInteger('site')->unsigned();
             $table->foreign('site')->references('id')->on('locations');
             $table->string('room');
-            $table->string('program');
             $table->string('category');
 
             $table->string('name');
