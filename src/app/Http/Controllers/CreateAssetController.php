@@ -36,6 +36,7 @@ class CreateAssetController extends Controller
         }
 
         $asset = new Asset;
+        $asset->name = $request->get("asset_name");
         $asset->serial = $request->get("serial");
         $asset->barcode = $request->get("barcode");
 
@@ -45,11 +46,9 @@ class CreateAssetController extends Controller
         $asset->category = $category;
         $asset->site = Location::where('site_number', $site_number)->first()->id;
         $asset->room = $request->get("room");
-        $asset->program = $request->get("program");
         $asset->purchase_date = $request->get("purchase_date");
-        $asset->expected_lifespan_seconds = $request->get("expected_lifespan_seconds");
+        $asset->projected_eol_date = $request->get("projected_eol_date");
 
-        //$asset->notes = $request->get("notes") ?: "";
         $asset->save();
 
         return redirect()->back()->with('status', 'Asset has been successfully created');

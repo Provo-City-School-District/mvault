@@ -72,9 +72,9 @@ class DatabaseSeeder extends Seeder
                     'model' => 'Model ' . chr(88 + $i),
                     'site' => $locationId,
                     'room' => 'Room ' . (100 + $i),
-                    'category' => 'Category ' . chr(65 + $i),
+                    //'category' => 'Category ' . chr(65 + $i),
                     'purchase_date' => now(),
-                    'expected_lifespan_seconds' => 5 + $i,
+                    'projected_eol_date' => now()->addDays(10),
                     'last_validated' => now(),
                 ]);
             }

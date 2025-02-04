@@ -21,6 +21,8 @@
 
     <div>
         <h2 class="text-2xl">General Information</h2>
+        <label for="asset_name">Asset Name:</label>
+        <input class="bg-gray-200 text-gray-700 border border-black rounded" type="text" id="asset_name" name="asset_name">
         <label for="category">Category:</label>
         <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10" id="category" name="category">
             <option disabled selected value> -- Select a category -- </option>
@@ -58,14 +60,14 @@
 
         <h2 class="text-2xl">Purchasing</h2>
         <div class="grid grid-cols-2 gap-4 mb-10">
-            <label for="program">Asset Price:</label>
+            <label for="purchase_price">Asset Price:</label>
             <input class="bg-gray-200 text-gray-700 border border-black rounded" type="text" id="purchase_price" name="purchase_price">
 
             <label for="purchase_date">Purchase Date:</label>
             <input class="bg-gray-200 text-gray-700 border border-black rounded" type="date" id="purchase_date" name="purchase_date">
 
-            <label for="expected_lifespan">Expected Lifespan:</label>
-            <input class="bg-gray-200 text-gray-700 border border-black rounded" type="number" id="expected_lifespan" name="expected_lifespan">
+            <label for="projected_eol_date">Projected EOL Date:</label>
+            <input class="bg-gray-200 text-gray-700 border border-black rounded" type="date" id="projected_eol_date" name="projected_eol_date">
         </div>
 
         <h2 class="text-2xl">Extra</h2>
