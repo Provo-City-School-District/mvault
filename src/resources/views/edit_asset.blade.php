@@ -70,8 +70,8 @@
 
         <h2 class="text-2xl">Extra</h2>
         <div class="grid grid-cols-4 gap-4 mb-10">
-            <label for="notes">Additional notes:</label>
-            <input class="bg-gray-200 text-gray-700 border border-black rounded" type="text" id="notes" name="notes" value="{{ $asset->notes }}">
+            <label for="notes">Description:</label>
+            <input class="bg-gray-200 text-gray-700 border border-black rounded" type="text" id="description" name="description" value="{{ $asset->description }}">
         </div>
 
         <div id="inventory">

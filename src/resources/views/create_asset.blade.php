@@ -66,14 +66,21 @@
             <label for="purchase_date">Purchase Date:</label>
             <input class="bg-gray-200 text-gray-700 border border-black rounded" type="date" id="purchase_date" name="purchase_date">
 
-            <label for="projected_eol_date">Projected EOL Date:</label>
-            <input class="bg-gray-200 text-gray-700 border border-black rounded" type="date" id="projected_eol_date" name="projected_eol_date">
+            <label for="projected_eol_date">Projected Asset Lifetime:</label>
+            <div>
+                <input class="bg-gray-200 text-gray-700 border border-black rounded" type="number" id="projected_lifetime" name="projected_lifetime">
+                <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5" id="projected_lifetime_units" name="projected_lifetime_units">
+                    <option value="years">Years</option>
+                    <option value="months">Months</option>
+                    <option value="days">Days</option>
+                </select>
+            </div>
         </div>
 
         <h2 class="text-2xl">Extra</h2>
         <div class="grid grid-cols-2 gap-4 mb-10">
-            <label for="notes">Additional notes:</label>
-            <input class="bg-gray-200 text-gray-700 border border-black rounded" type="text" id="notes" name="notes">
+            <label for="notes">Description:</label>
+            <input class="bg-gray-200 text-gray-700 border border-black rounded" type="text" id="description" name="description">
         </div>
 
         <input type="submit" class="button" value="Create Asset">

@@ -63,21 +63,6 @@ class DatabaseSeeder extends Seeder
                 'site_number' => $location[0], // Insert site_number
                 'display_name' => $location[1]
             ]);
-            // Insert asset for each location
-            for ($i = 1; $i < 10; $i++) {
-                DB::table('assets')->insert([
-                    'serial' => Str::random(10),
-                    'barcode' => Str::random(10),
-                    'company' => 'Company ' . chr(65 + $i),
-                    'model' => 'Model ' . chr(88 + $i),
-                    'site' => $locationId,
-                    'room' => 'Room ' . (100 + $i),
-                    //'category' => 'Category ' . chr(65 + $i),
-                    'purchase_date' => now(),
-                    'projected_eol_date' => now()->addDays(10),
-                    'last_validated' => now(),
-                ]);
-            }
         }
 
 

@@ -33,7 +33,7 @@ return new class extends Migration
 
             $table->bigInteger('site')->unsigned();
             $table->foreign('site')->references('id')->on('locations');
-            $table->string('room');
+            $table->string('room')->nullable();
             $table->bigInteger('category')->nullable()->unsigned();
             $table->foreign('category')->references('id')->on('asset_categories');
 
@@ -41,13 +41,14 @@ return new class extends Migration
             $table->string('company');
             $table->string('model');
             $table->string('serial');
-            $table->string('barcode');
+            $table->string('barcode')->nullable();
             $table->decimal('purchase_price', 10, 2);
             $table->date('purchase_date');
             $table->date('projected_eol_date');
-            // TODO: Preven. Maint Date
-            // TODO: replacement date should be based on purchase_date + life_expectancy?
             $table->decimal('replacement_price', 10, 2);
+
+            $table->string('description');
+
             $table->timestamp('last_validated')->default(DB::raw('TIMESTAMP(0)'));
             $table->timestamps();
         });

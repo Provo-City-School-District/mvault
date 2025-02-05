@@ -39,6 +39,7 @@ class EditAssetController extends Controller
         $asset->purchase_date = $request->get("purchase_date");
         $asset->purchase_price = $request->get("purchase_price");
         $asset->projected_eol_date = $request->get("projected_eol_date");
+        $asset->description = $request->get("description");
 
         $asset->save();
 
