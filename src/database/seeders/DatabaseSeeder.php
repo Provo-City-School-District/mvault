@@ -87,7 +87,10 @@ class DatabaseSeeder extends Seeder
             "Plumbing",
             "Roofing",
             "Vehicle Maintenance",
-            "Wall Repair"
+            "Wall Repair",
+            "Hardscape",
+            "Playground",
+            "Site Work"
         ];
 
         $i = 1;
