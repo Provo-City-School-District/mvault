@@ -90,7 +90,8 @@ class DatabaseSeeder extends Seeder
             "Wall Repair",
             "Hardscape",
             "Playground",
-            "Site Work"
+            "Site Work",
+            "Other"
         ];
 
         $i = 1;
