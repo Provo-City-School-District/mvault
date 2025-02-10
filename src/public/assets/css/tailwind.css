@@ -107,7 +107,7 @@
 }
 
 /*
-! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -581,6 +581,10 @@ html {
 
 .hidden {
   display: none;
+}
+
+.min-h-\[200px\] {
+  min-height: 200px;
 }
 
 .border-collapse {
