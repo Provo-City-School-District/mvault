@@ -25,13 +25,13 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="asset_name">Asset Name:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="asset_name" name="asset_name">
                     <label for="barcode">Barcode:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                             id="barcode" name="barcode">
                     <label for="category">Category:</label>
-                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10 col-span-3"
+                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10 col-span-3 p-1"
                         id="category" name="category">
                         <option disabled selected value> -- Select a category -- </option>
                         @foreach ($categories as $category)
@@ -42,15 +42,15 @@
                 </div>
                 <div class="grid grid-cols-4 gap-4">
                     <label for="serial">Serial:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="serial" name="serial">
 
                     <label for="company">Company:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="company" name="company">
 
                     <label for="model">Model:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="model" name="model">
                 </div>
             </div>
@@ -60,7 +60,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="site_number">Site:</label>
-                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-3" id="site_number"
+                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-3 p-1" id="site_number"
                         name="site_number">
                         <option disabled selected value> -- Select a location -- </option>
                         @foreach ($sites as $site)
@@ -70,7 +70,7 @@
                 </div>
                 <div class="grid grid-cols-4 gap-4">
                     <label for="room">Room:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="room" name="room">
                 </div>
             </div>
@@ -80,24 +80,25 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="purchase_price">Asset Price:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="purchase_price" name="purchase_price">
                     <label for="purchase_date">Purchase Date:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="date"
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="date"
                         id="purchase_date" name="purchase_date">
-                </div>
-                <div class="grid grid-cols-2">
                     <label for="projected_eol_date">Projected Asset Lifetime:</label>
-                    <div class="grid grid-cols-2 gap-1">
-                        <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-1" type="number"
+                    <div class="flex">
+                        <input class="bg-gray-200 text-gray-700 border border-black rounded p-1" type="number"
                             id="projected_lifetime" name="projected_lifetime">
-                        <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-1"
+                        <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5"
                             id="projected_lifetime_units" name="projected_lifetime_units">
                             <option value="years">Years</option>
                             <option value="months">Months</option>
                             <option value="days">Days</option>
                         </select>
                     </div>
+                </div>
+                <div class="grid grid-cols-2">
+                   
                 </div>
             </div>
 
