@@ -19,7 +19,7 @@
             </select>
         </div>
         <div>
-            <label for="search_query">Barcode/Serial:</label>
+            <label for="search_query">Query:</label>
             <input class="bg-gray-200 text-gray-700 border border-black rounded" type="text" id="search_query" name="search_query">
         </div>
     </div>
