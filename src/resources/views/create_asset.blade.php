@@ -19,6 +19,7 @@
     <form method="POST" action="{{ route('create_asset') }}">
         @csrf
 
+
         <div>
             <h2 class="text-2xl">General Information</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -26,6 +27,9 @@
                     <label for="asset_name">Asset Name:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
                         id="asset_name" name="asset_name">
+                    <label for="barcode">Barcode:</label>
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
+                            id="barcode" name="barcode">
                     <label for="category">Category:</label>
                     <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10 col-span-3"
                         id="category" name="category">
@@ -34,9 +38,7 @@
                             <option value="{{ $category->id }}">{{ $category->display_name }}</option>
                         @endforeach
                     </select>
-                    <label for="barcode">Barcode:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
-                        id="barcode" name="barcode">
+                   
                 </div>
                 <div class="grid grid-cols-4 gap-4">
                     <label for="serial">Serial:</label>
@@ -51,10 +53,8 @@
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text"
                         id="model" name="model">
                 </div>
-
-
-
             </div>
+
 
             <h2 class="text-2xl">Location</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -74,6 +74,7 @@
                         id="room" name="room">
                 </div>
             </div>
+
 
             <h2 class="text-2xl">Purchasing</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -99,6 +100,7 @@
                     </div>
                 </div>
             </div>
+
 
             <h2 class="text-2xl">Extra</h2>
             <div class="grid gap-4 mb-10">
