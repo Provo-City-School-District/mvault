@@ -5,3 +5,4 @@ src/public/info.php
 .DS_Store
 !.gitkeep
 node_modules/
+src/.phpunit.result.cache
