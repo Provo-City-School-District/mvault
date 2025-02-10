@@ -11,6 +11,7 @@
         <div class="mb-3">
             <label for="search_by">Search By:</label>
             <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5"  id="search_by" name="search_by">
+                <option value="name">Name</option>
                 <option value="barcode_serial">Barcode/Serial</option>
                 <option value="barcode">Barcode</option>
                 <option value="serial">Serial</option>

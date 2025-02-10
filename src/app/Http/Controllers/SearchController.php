@@ -19,7 +19,7 @@ class SearchController extends Controller
         return view('search');
     }
 
-    const VALID_SEARCH_BY = ["barcode_serial", "barcode", "serial", "location"];
+    const VALID_SEARCH_BY = ["name", "barcode_serial", "barcode", "serial", "location"];
 
     public function handleForm(Request $request) {
         $search_by = $request->get("search_by");
@@ -30,6 +30,9 @@ class SearchController extends Controller
         $query = $request->get("search_query");
         
         switch ($search_by) {
+            case "name":
+                $assets = Asset::where('name', 'LIKE', "%$query%")->get();
+            break;
             case "barcode_serial":
                 $assets = Asset::where('barcode', 'LIKE', "%$query%")
                                         ->orWhere('serial', 'LIKE', "%$query%")
