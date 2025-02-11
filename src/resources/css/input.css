@@ -1,4 +1,4 @@
-@tailwind base; 
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -13,7 +13,27 @@ a {
 
 @layer base {
     html {
-      font-family: "Campton-Medium", system-ui, sans-serif;
+        font-family: "Campton-Medium", system-ui, sans-serif;
+    }
+}
+
+/*========================================================================================== 
+Header Styles
+==========================================================================================*/
+
+#mainHeader {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    background-color: #f4f4f4;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+}
+
+@media (min-width: 900px) {
+    #mainHeader {
+        grid-template-columns: 350px 1fr;
+        align-items: center;
     }
 }
 
@@ -94,7 +114,9 @@ a {
     }
 }
 
-
+/*========================================================================================== 
+Utility Styles
+==========================================================================================*/
 .button {
     background-color: var(--button-background);
     color: var(--theme-white);
@@ -131,25 +153,25 @@ button:hover,
     gap: 1em;
 }
 
-/*========================================================================================== 
-Header Styles
-==========================================================================================*/
-#mainHeader {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    background-color: #f4f4f4;
-    color: #333;
-    border-bottom: 1px solid #ccc;
-}
-
-@media (min-width: 900px) {
-    #mainHeader {
-        grid-template-columns: 350px 1fr;
-        align-items: center;
-    }
-}
-
 /*==========================================
-Main Nav
+Typography
 ===========================================*/
+h1 {
+    font-size: 2.5em;
+    margin: 0.5em 0;
+}
+
+h2 {
+    font-size: 2em;
+    margin: 0.5em 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+}
+
+h4 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}

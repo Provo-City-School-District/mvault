@@ -15,13 +15,13 @@
         </div>
     @endif
 
-    <h1 class="text-3xl mb-10">Create Asset</h1>
+    <h1>Create Asset</h1>
     <form method="POST" action="{{ route('create_asset') }}">
         @csrf
 
 
         <div>
-            <h2 class="text-2xl">General Information</h2>
+            <h2>General Information</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="asset_name">Asset Name:</label>
@@ -56,7 +56,7 @@
             </div>
 
 
-            <h2 class="text-2xl">Location</h2>
+            <h2>Location</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="site_number">Site:</label>
@@ -76,7 +76,7 @@
             </div>
 
 
-            <h2 class="text-2xl">Purchasing</h2>
+            <h2>Purchasing</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="purchase_price">Asset Price:</label>
@@ -103,7 +103,7 @@
             </div>
 
 
-            <h2 class="text-2xl">Extra</h2>
+            <h2>Extra</h2>
             <div class="grid gap-4 mb-10">
                 <label for="notes">Description:</label>
                 <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[200px] p-3" type="text"

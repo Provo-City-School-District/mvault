@@ -12,8 +12,8 @@
     <input type="hidden" name="id" value="{{ $asset->id }}">
     <div class="asset-container">
 
-
-        <h2 class="text-2xl">General Information</h2>
+        <h1>Edit Asset {{ $asset->name }}</h1>
+        <h2>General Information</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             <div class="grid grid-cols-4 gap-4">
                 <label for="asset_name">Asset Name:</label>
@@ -52,7 +52,7 @@
         </div>
 
 
-        <h2 class="text-2xl">Location</h2>
+        <h2>Location</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             <div class="grid grid-cols-4 gap-4 mb-10">
                 <label for="site_number">Site:</label>
@@ -66,6 +66,7 @@
                     @endforeach
                 </select>
             </div>
+
             <div class="grid grid-cols-4 gap-4 mb-10">
                 <label for="room">Room:</label>
                 <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="text" id="room" name="room" value="{{ $asset->room }}">
@@ -73,7 +74,7 @@
         </div>
 
 
-        <h2 class="text-2xl">Purchasing</h2>
+        <h2>Purchasing</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4 mb-10">
                     <label for="purchase_price">Asset Price:</label>
@@ -81,28 +82,34 @@
 
                     <label for="purchase_date">Purchase Date:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="date" id="purchase_date" name="purchase_date" value="{{ $asset->purchase_date }}">
-        
+
                     <label for="projected_eol_date">Projected EOL Date:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="date" id="projected_eol_date" name="projected_eol_date" value="{{ $asset->projected_eol_date }}">
                 </div>
+
                 <div class="grid grid-cols-4 gap-4 mb-10">
                     <p>Last validated:</p> {{ $asset->last_validated }}
                 </div>
             </div>
 
 
-        <h2 class="text-2xl">Extra</h2>
-            <div class="grid gap-4 mb-10">
-                <label for="notes">Description:</label>
-                <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[200px] p-3" type="text" id="description" name="description">{{ $asset->description }}</textarea>
-           
+        <h2>Extra</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                <div class="grid grid-cols-4 gap-4 mb-10">
+                    <label for="notes">Description:</label>
+                    <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[200px] p-3 col-span-3" type="text" id="description" name="description">{{ $asset->description }}</textarea>
+                </div>
+                
+                <div class="grid grid-cols-4 gap-4 mb-10">
+                    <h3>Work Done</h3>
+                </div>
             </div>
             
 
-        <div id="inventory">
+  
             
             <input type="submit" class="button" value="Update Asset">
-        </div>
+
     </div>
 </form>
 @endsection
