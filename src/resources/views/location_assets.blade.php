@@ -21,7 +21,7 @@
             @foreach ($assets as $asset)
                 <tr class="hover:bg-gray-50">
                     <td class="border px-8 py-4"><a
-                            href="{{ route('edit_asset', ['asset' => $asset->id]) }}">{{ $asset->name }}</a></td>
+                            href="{{ route('edit_asset', ['asset_id' => $asset->id]) }}">{{ $asset->name }}</a></td>
                     <td class="border px-8 py-4">{{ $asset->room }}</td>
                     <td class="border px-8 py-4">{{ $asset->serial }}</td>
                     <td class="border px-8 py-4">{{ $asset->barcode }}</td>
