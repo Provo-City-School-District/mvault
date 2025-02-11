@@ -128,11 +128,13 @@
         </form>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 mb-10">
+    <div>
         <h2 class="col-span-full">Previous Work</h2>
-        @foreach ($asset->workDone as $work)
-        <li class="col-span-full">{{ $work->date }}: {{ $work->description }}</li>
-    @endforeach
+        <ul>
+            @foreach ($asset->workDone as $work)
+            <li>{{ $work->date }}: {{ $work->description }}</li>
+            @endforeach
+        </ul>
     </div>
 
 </div>
