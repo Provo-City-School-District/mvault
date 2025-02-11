@@ -18,6 +18,9 @@ class EditAssetController extends Controller
         $asset = Asset::where('id', $request->asset_id)->first();
         $sites = Location::all();
         $categories = AssetCategory::orderBy('display_name')->get();
+        $asset->load(['workDone' => function ($query) {
+            $query->orderBy('date', 'desc');
+        }]);
         return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories]);
     }
 
@@ -63,6 +66,6 @@ class EditAssetController extends Controller
 
         $asset->save();
 
-        return redirect()->back()->with('status', 'Asset has been successfully updated');   
+        return redirect()->back()->with('status', 'Asset has been successfully updated');
     }
 }
