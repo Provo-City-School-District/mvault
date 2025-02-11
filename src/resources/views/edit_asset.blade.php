@@ -111,22 +111,29 @@
     </div>
 </form>
 <p>Last validated:</p> {{ $asset->last_validated }}
-<h2>Work Done</h2>
-<form method="POST" action="{{ route('work_done.store', $asset->id) }}">
-    @csrf
-    <label for="work_description">Description of Work:</label>
-    <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[100px] p-3 col-span-3" id="work_description" name="description"></textarea>
 
-    <label for="work_date">Date of work:</label>
-    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="date" id="work_date" name="date">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
 
-    <input type="submit" class="button" value="Add Work Done">
-</form>
+    <div class="grid">
+        <h2 class="col-span-full">Add Work</h2>
+        <form method="POST" action="{{ route('work_done.store', $asset->id) }}" class="grid grid-cols-4 gap-4">
+            @csrf
+            <label for="work_description" class="block col-span-full">Description of Work:</label>
+            <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[100px] p-3 col-span-full" id="work_description" name="description"></textarea>
+        
+            <label for="work_date" class="col-span-1">Date of work:</label>
+            <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="date" id="work_date" name="date">
+        
+            <input type="submit" class="button" value="Add Work Done">
+        </form>
+    </div>
 
-<h3>Previous Work</h3>
-<ul>
-    @foreach ($asset->workDone as $work)
-        <li>{{ $work->date }}: {{ $work->description }}</li>
+    <div class="grid grid-cols-2 gap-4 mb-10">
+        <h2 class="col-span-full">Previous Work</h2>
+        @foreach ($asset->workDone as $work)
+        <li class="col-span-full">{{ $work->date }}: {{ $work->description }}</li>
     @endforeach
-</ul>
+    </div>
+
+</div>
 @endsection
