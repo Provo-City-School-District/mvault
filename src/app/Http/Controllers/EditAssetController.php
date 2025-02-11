@@ -15,8 +15,15 @@ class EditAssetController extends Controller
 {
     public function show(Request $request)
     {
-        $asset_id = $request->asset;
-        $asset = Asset::where('id', $asset_id)->first();
+        $asset = Asset::where('id', $request->asset_id)->first();
+        $sites = Location::all();
+        $categories = AssetCategory::orderBy('display_name')->get();
+        return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories]);
+    }
+
+    public function show_barcode(Request $request)
+    {
+        $asset = Asset::where('barcode', $request->barcode)->first();
         $sites = Location::all();
         $categories = AssetCategory::orderBy('display_name')->get();
         return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories]);
