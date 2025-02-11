@@ -20,15 +20,19 @@ class Asset extends Model
         switch ($lifetime_units) {
             case "years":
                 return $projected_eol_date->addYears($lifetime);
-            break;
+                break;
             case "months":
                 return $projected_eol_date->addMonths($lifetime);
-            break;
+                break;
             case "days":
                 return $projected_eol_date->addDays($lifetime);
-            break;
+                break;
             default:
                 return null;
         }
+    }
+    public function workDone()
+    {
+        return $this->hasMany(WorkDone::class);
     }
 }

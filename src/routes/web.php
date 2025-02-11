@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit_asset/{asset_id}', [App\Http\Controllers\EditAssetController::class, 'show'])->name("edit_asset");
     Route::get('/edit_asset_bc/{barcode}', [App\Http\Controllers\EditAssetController::class, 'show_barcode'])->name("edit_asset_barcode");
     Route::post('/update_asset', [App\Http\Controllers\EditAssetController::class, 'handleForm'])->name("update_asset");
+    Route::post('/assets/{asset}/work-done', [App\Http\Controllers\WorkDoneController::class, 'store'])->name('work_done.store');
 
     Route::get('/location_assets/{location}', [App\Http\Controllers\LocationAssetsController::class, 'show'])->name("location_assets");
 

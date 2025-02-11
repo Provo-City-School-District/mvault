@@ -85,9 +85,10 @@
         </div>
 
 
-        <h2>Purchasing</h2>
+       
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4 mb-10">
+                    <h2 class="col-span-full">Purchasing</h2>
                     <label for="purchase_price">Asset Price:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="number" id="purchase_price" name="purchase_price" value="{{ $asset->purchase_price }}">
 
@@ -99,28 +100,33 @@
                 </div>
 
                 <div class="grid grid-cols-4 gap-4 mb-10">
-                    <p>Last validated:</p> {{ $asset->last_validated }}
+                    <h2>Extra</h2>
+                    <label for="notes" class="col-span-full">Description:</label>
+                    <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[100px] p-3 col-span-full" type="text" id="description" name="description">{{ $asset->description }}</textarea>
                 </div>
             </div>
-
-
-        <h2>Extra</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                <div class="grid grid-cols-4 gap-4 mb-10">
-                    <label for="notes">Description:</label>
-                    <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[200px] p-3 col-span-3" type="text" id="description" name="description">{{ $asset->description }}</textarea>
-                </div>
-                
-                <div class="grid grid-cols-4 gap-4 mb-10">
-                    <h3>Work Done</h3>
-                </div>
-            </div>
-            
-
-  
             
             <input type="submit" class="button" value="Update Asset">
 
     </div>
 </form>
+<p>Last validated:</p> {{ $asset->last_validated }}
+<h2>Work Done</h2>
+<form method="POST" action="{{ route('work_done.store', $asset->id) }}">
+    @csrf
+    <label for="work_description">Description of Work:</label>
+    <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[100px] p-3 col-span-3" id="work_description" name="description"></textarea>
+
+    <label for="work_date">Date of work:</label>
+    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="date" id="work_date" name="date">
+
+    <input type="submit" class="button" value="Add Work Done">
+</form>
+
+<h3>Previous Work</h3>
+<ul>
+    @foreach ($asset->workDone as $work)
+        <li>{{ $work->date }}: {{ $work->description }}</li>
+    @endforeach
+</ul>
 @endsection
