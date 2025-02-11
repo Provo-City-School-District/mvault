@@ -24,6 +24,19 @@ class EditAssetController extends Controller
 
     public function handleForm(Request $request)
     {
+        $request->validate([
+            'id' => 'required',
+            'asset_name' => 'required',
+            'serial' => 'required',
+            'company' => 'required',
+            'category' => 'required',
+            'model' => 'required',
+            'site_number' => 'required',
+            'purchase_price' => 'required',
+            'purchase_date' => 'required',
+            'projected_eol_date' => 'required',
+        ]);
+
         $asset = Asset::where('id', $request->id)->first();
         $asset->name = $request->get("asset_name");
         $asset->serial = $request->get("serial");

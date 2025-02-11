@@ -7,12 +7,23 @@
     </div>
 @endif
 
+@if ($errors->any())
+    <div class="error-container">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li class="text-red-500"><strong>{{ $error }}</strong></li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <form method="POST" action="{{ route('update_asset') }}"> 
     @csrf
+    
     <input type="hidden" name="id" value="{{ $asset->id }}">
     <div class="asset-container">
 
-        <h1>Edit Asset {{ $asset->name }}</h1>
+        <h1>Edit Asset '{{ $asset->name }}'</h1>
         <h2>General Information</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             <div class="grid grid-cols-4 gap-4">
