@@ -24,37 +24,18 @@ class CreateAssetController extends Controller
 
     public function handleForm(Request $request)
     {
-
-        $category = $request->get("category");
-        if (!isset($category)) {
-            return redirect()->back()->withErrors(['form_validation' => 'Category not set']);
-        }
-    
-        $site_number = $request->get("site_number");
-        if (!isset($site_number)) {
-            return redirect()->back()->withErrors(['form_validation' => 'Site not set']);
-        }
-
-        $purchase_date = $request->get("purchase_date");
-        if (!isset($purchase_date)) {
-            return redirect()->back()->withErrors(['form_validation' => 'Purchase date not set']);
-        }
-
-        $projected_lifetime = $request->integer("projected_lifetime");
-        if (!isset($projected_lifetime)) {
-            return redirect()->back()->withErrors(['form_validation' => 'Projected lifetime not set']);
-        }
-
-        $projected_lifetime_units = $request->get("projected_lifetime_units");
-        if (!isset($projected_lifetime_units)) {
-            return redirect()->back()->withErrors(['form_validation' => 'Projected lifetime units not set']);
-        }
-
-        $valid_projected_lifetime_units = ["years", "months", "days"];
-        if (!in_array($projected_lifetime_units, $valid_projected_lifetime_units, true)) {
-            return redirect()->back()->withErrors(['form_validation' => "Projected lifetime units are invalid: $projected_lifetime_units"]);
-        }
-
+        $request->validate([
+            'asset_name' => 'required',
+            'serial' => 'required',
+            'company' => 'required',
+            'category' => 'required',
+            'model' => 'required',
+            'site_number' => 'required',
+            'purchase_price' => 'required',
+            'purchase_date' => 'required',
+            'projected_lifetime' => 'required',
+            'projected_lifetime_units' => 'required|in:years,days,months'
+        ]);
 
         $asset = new Asset;
         $asset->name = $request->get("asset_name");
@@ -64,13 +45,14 @@ class CreateAssetController extends Controller
         $asset->company = $request->get("company");
         $asset->model = $request->get("model");
 
-        $asset->category = $category;
-        $asset->site = Location::where('site_number', $site_number)->first()->id;
+        $asset->category = $request->get("category");
+        $asset->site = Location::where('site_number', $request->get("site_number"))->first()->id;
         $asset->room = $request->get("room");
 
         $asset->purchase_price = $request->get("purchase_price");
-        $asset->purchase_date = $purchase_date;
-        $asset->projected_eol_date = Asset::calculate_projected_eol_date($purchase_date, $projected_lifetime, $projected_lifetime_units);
+        $asset->purchase_date = $request->get("purchase_date");
+        $asset->projected_eol_date = Asset::calculate_projected_eol_date(
+            $asset->purchase_price, (int)$request->get("projected_lifetime"), $request->get("projected_lifetime_units"));
 
         $asset->description = $request->get("description");
         $asset->save();

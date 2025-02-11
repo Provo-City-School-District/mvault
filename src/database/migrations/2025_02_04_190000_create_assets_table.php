@@ -47,7 +47,7 @@ return new class extends Migration
             $table->date('projected_eol_date');
             $table->decimal('replacement_price', 10, 2);
 
-            $table->string('description');
+            $table->string('description')->nullable();
 
             $table->timestamp('last_validated')->default(DB::raw('TIMESTAMP(0)'));
             $table->timestamps();
