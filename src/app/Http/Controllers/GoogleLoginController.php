@@ -46,6 +46,6 @@ class GoogleLoginController extends Controller
 
         Auth::login($user, true);
 
-        return redirect('profile');
+        return redirect()->intended('profile');
     }
 }
