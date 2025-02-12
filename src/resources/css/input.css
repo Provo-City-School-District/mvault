@@ -124,7 +124,6 @@ Utility Styles
     padding: 1em;
     border-radius: 4px;
     cursor: pointer;
-    grid-column: span 2;
     font-size: 1em;
     margin: 1em 0;
 }
