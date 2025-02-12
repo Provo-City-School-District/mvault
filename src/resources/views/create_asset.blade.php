@@ -29,16 +29,17 @@
                         id="asset_name" name="asset_name" value="{{ old('asset_name') }}">
                     <label for="barcode">Barcode:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
-                            id="barcode" name="barcode" value="{{ old('barcode') }}">
+                        id="barcode" name="barcode" value="{{ old('barcode') }}">
                     <label for="category">Category:</label>
                     <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10 col-span-3 p-1"
                         id="category" name="category">
                         <option disabled selected value> -- Select a category -- </option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" @selected(old('category') == $category->id)>{{ $category->display_name }}</option>
+                            <option value="{{ $category->id }}" @selected(old('category') == $category->id)>{{ $category->display_name }}
+                            </option>
                         @endforeach
                     </select>
-                   
+
                 </div>
                 <div class="grid grid-cols-4 gap-4">
                     <label for="serial">Serial:</label>
@@ -60,11 +61,12 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="site_number">Site:</label>
-                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-3 p-1" id="site_number"
-                        name="site_number">
+                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-3 p-1"
+                        id="site_number" name="site_number">
                         <option disabled selected value> -- Select a location -- </option>
                         @foreach ($sites as $site)
-                            <option value="{{ $site->site_number }}" @selected(old('site_number') == $site->site_number)>{{ $site->display_name }}</option>
+                            <option value="{{ $site->site_number }}" @selected(old('site_number') == $site->site_number)>
+                                {{ $site->display_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -98,7 +100,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2">
-                   
+
                 </div>
             </div>
 

@@ -10,11 +10,11 @@
 
 <body>
     @if ($errors->has('login'))
-    <div class="error-container">
-        <strong>
-            {{ $errors->first('login') }}
-        </strong>
-    </div>
+        <div class="error-container">
+            <strong>
+                {{ $errors->first('login') }}
+            </strong>
+        </div>
     @endif
 
     <div id="login-wrapper">
