@@ -116,18 +116,18 @@
 
     <div class="grid">
         <h2 class="col-span-full">Add Work</h2>
-        <form method="POST" action="{{ route('work_done.store', $asset->id) }}" class="grid grid-cols-4 gap-4">
+        <form method="POST" action="{{ route('work_done.store', $asset->id) }}" class="grid grid-cols-6 gap-4">
             @csrf
-            <label for="work_description" class="block col-span-full">Description of Work:</label>
+            <label for="work_description" class="col-span-full">Description of Work:</label>
             <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[100px] p-3 col-span-full" id="work_description" name="description"></textarea>
         
-            <label for="work_date" class="col-span-1">Date of work:</label>
-            <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="date" id="work_date" name="date">
+            <label for="work_date" class="col-span-2">Date of work:</label>
+            <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-4" type="date" id="work_date" name="date">
 
-            <label for="ticket_id" class="col-span-1">Ticket Number:</label>
-            <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="number" id="ticket_id" name="ticket_id">
+            <label for="ticket_id" class="col-span-2">Ticket Number:</label>
+            <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-4" type="number" id="ticket_id" name="ticket_id">
         
-            <input type="submit" class="button" value="Add Work Done">
+            <input type="submit" class="button " value="Add Work Done">
         </form>
     </div>
 
