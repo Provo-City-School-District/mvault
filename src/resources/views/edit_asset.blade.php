@@ -123,6 +123,9 @@
         
             <label for="work_date" class="col-span-1">Date of work:</label>
             <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="date" id="work_date" name="date">
+
+            <label for="ticket_id" class="col-span-1">Ticket Number:</label>
+            <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="number" id="ticket_id" name="ticket_id">
         
             <input type="submit" class="button" value="Add Work Done">
         </form>
@@ -132,7 +135,7 @@
         <h2 class="col-span-full">Previous Work</h2>
         <ul>
             @foreach ($asset->workDone as $work)
-            <li>{{ $work->date }}: {{ $work->description }}</li>
+            <li>{{ $work->date }}: {{ $work->description }} by {{ $work->user->name }} in ticket {{ $work->ticket_id }}</li>
             @endforeach
         </ul>
     </div>
