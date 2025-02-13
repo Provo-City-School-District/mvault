@@ -81,7 +81,7 @@
             <h2>Purchasing</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
-                    <label for="purchase_price">Asset Price:</label>
+                    <label for="purchase_price">Purchase Price:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="purchase_price" name="purchase_price" value="{{ old('purchase_price') }}">
                     <label for="purchase_date">Purchase Date:</label>

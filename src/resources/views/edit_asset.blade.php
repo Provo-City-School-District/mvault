@@ -97,7 +97,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4 mb-10">
                     <h2 class="col-span-full">Purchasing</h2>
-                    <label for="purchase_price">Asset Price:</label>
+                    <label for="purchase_price">Purchase Price:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3" type="number"
                         id="purchase_price" name="purchase_price" value="{{ $asset->purchase_price }}">
 
