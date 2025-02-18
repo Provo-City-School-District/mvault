@@ -41,18 +41,18 @@
                     </select>
 
                 </div>
-                <div class="grid grid-cols-4 gap-4">
-                    <label for="serial">Serial:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
+                <div class="grid grid-rows-3 gap-4 w-full">
+                    <div>
+                        <label for="serial">Serial:</label>
+                        <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1 w-full" type="text"
                         id="serial" name="serial" value="{{ old('serial') }}">
-
-                    <label for="company">Company:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
-                        id="company" name="company" value="{{ old('company') }}">
-
-                    <label for="model">Model:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
+                    </div>
+                    @livewire('asset-company-autocomplete')
+                    <div>
+                        <label for="model">Model:</label>
+                        <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="model" name="model" value="{{ old('model') }}">
+                    </div>
                 </div>
             </div>
 

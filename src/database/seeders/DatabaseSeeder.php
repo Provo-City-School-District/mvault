@@ -102,5 +102,17 @@ class DatabaseSeeder extends Seeder
             ]);
             $i++;
         }
+
+        $company_data = [
+            "Apple"
+        ];
+        $i = 1;
+        foreach ($company_data as $company) {
+            DB::table('asset_companies')->insert([
+                'id' => $i,
+                'name' => $company
+            ]);
+            $i++;
+        }
     }
 }

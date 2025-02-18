@@ -38,7 +38,8 @@ return new class extends Migration
             $table->foreign('category')->references('id')->on('asset_categories');
 
             $table->string('name');
-            $table->string('company');
+            $table->bigInteger('company')->unsigned();
+            $table->foreign('company')->references('id')->on('asset_companies');
             $table->string('model');
             $table->string('serial');
             $table->string('barcode')->nullable();

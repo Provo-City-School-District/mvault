@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Asset;
 use App\Models\Location;
 use App\Models\AssetCategory;
+use App\Models\AssetCompany;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -42,7 +43,8 @@ class CreateAssetController extends Controller
         $asset->serial = $request->get("serial");
         $asset->barcode = $request->get("barcode");
 
-        $asset->company = $request->get("company");
+        $matching_company = AssetCompany::where('name', $request->get("company"))->first();
+        $asset->company = $matching_company->id;
         $asset->model = $request->get("model");
 
         $asset->category = $request->get("category");
@@ -52,7 +54,7 @@ class CreateAssetController extends Controller
         $asset->purchase_price = $request->get("purchase_price");
         $asset->purchase_date = $request->get("purchase_date");
         $asset->projected_eol_date = Asset::calculate_projected_eol_date(
-            $asset->purchase_price, (int)$request->get("projected_lifetime"), $request->get("projected_lifetime_units"));
+            $asset->purchase_date, (int)$request->get("projected_lifetime"), $request->get("projected_lifetime_units"));
 
         $asset->description = $request->get("description");
         $asset->save();

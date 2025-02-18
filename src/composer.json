@@ -8,7 +8,8 @@
         "php": "*",
         "laravel/framework": "^11.41",
         "laravel/socialite": "^5.16",
-        "laravel/tinker": "^2.10"
+        "laravel/tinker": "^2.10",
+        "livewire/livewire": "^3.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

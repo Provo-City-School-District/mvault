@@ -11,6 +11,9 @@ Route::get('/google/callback', [App\Http\Controllers\GoogleLoginController::clas
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show'])->name("profile");
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'show'])->name("admin");
+
+    Route::get('/asset_companies', [App\Http\Controllers\AssetCompaniesController::class, 'show'])->name("asset_companies");
 
     Route::get('/create_asset', [App\Http\Controllers\CreateAssetController::class, 'show'])->name("create_asset");
     Route::post('/create_asset', [App\Http\Controllers\CreateAssetController::class, 'handleForm']);
