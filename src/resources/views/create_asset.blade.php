@@ -31,7 +31,7 @@
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="barcode" name="barcode" value="{{ old('barcode') }}">
                     <label for="category">Category:</label>
-                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10 col-span-3 p-1"
+                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10 col-span-3"
                         id="category" name="category">
                         <option disabled selected value> -- Select a category -- </option>
                         @foreach ($categories as $category)
@@ -61,7 +61,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="site_number">Site:</label>
-                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-3 p-1"
+                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-3"
                         id="site_number" name="site_number">
                         <option disabled selected value> -- Select a location -- </option>
                         @foreach ($sites as $site)
