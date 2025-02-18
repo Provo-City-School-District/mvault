@@ -19,14 +19,13 @@ class SearchController extends Controller
         return view('search');
     }
 
-    const VALID_SEARCH_BY = ["name", "barcode_serial", "barcode", "serial", "location"];
-
     public function handleForm(Request $request) {
-        $search_by = $request->get("search_by");
-        if (!in_array($search_by, SearchController::VALID_SEARCH_BY)) {
-            return back()->withErrors("Invalid search_by field!");
-        }
+        $request->validate([
+            'search_by' => 'required|in:name,barcode_serial,barcode,serial,location',
+            'search_query' => 'required|string',
+        ]);
 
+        $search_by = $request->get("search_by");
         $query = $request->get("search_query");
         
         switch ($search_by) {

@@ -18,7 +18,7 @@
                 <td class="border px-8 py-4">{{ $asset->location_str }}</td>
                 <td class="border px-8 py-4">{{ $asset->name }}</td>
                 <td class="border px-8 py-4"><a
-                        href="{{ route('edit_asset', ['asset' => $asset->id]) }}">{{ $asset->serial }}</a></td>
+                        href="{{ route('edit_asset', ['asset_id' => $asset->id]) }}">{{ $asset->serial }}</a></td>
                 <td class="border px-8 py-4">{{ $asset->barcode }}</td>
                 <td class="border px-8 py-4">{{ $asset->model }}</td>
             </tr>

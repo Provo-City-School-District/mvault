@@ -3,6 +3,6 @@
 @section('content')
     <h1 class="text-3xl">Profile</h1>
 
-    Name: {{ $name }}<br>
-    Email: {{ $email }}
+    Name: {{ $user->name }}<br>
+    Email: {{ $user->email }}
 @endsection
