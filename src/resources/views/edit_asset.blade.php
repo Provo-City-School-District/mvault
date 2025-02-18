@@ -36,7 +36,7 @@
                         id="barcode" name="barcode" value="{{ $asset->barcode }}">
 
                     <label for="category">Category:</label>
-                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10 col-span-3 p-1"
+                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 mb-10 col-span-3"
                         id="category" name="category">
                         <option disabled value> -- Select a category -- </option>
                         @foreach ($categories as $category)
