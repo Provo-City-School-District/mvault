@@ -51,6 +51,7 @@ return new class extends Migration
             $table->string('description')->nullable();
 
             $table->timestamp('last_validated')->default(DB::raw('TIMESTAMP(0)'));
+            $table->boolean("eol")->default(false);
             $table->timestamps();
         });
     }

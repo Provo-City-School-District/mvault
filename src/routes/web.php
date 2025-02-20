@@ -28,5 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/location_assets/{location}', [App\Http\Controllers\LocationAssetsController::class, 'show'])->name("location_assets");
 
     Route::get('/search', [App\Http\Controllers\SearchController::class, 'show'])->name("search");
+    Route::get('/search_eol', [App\Http\Controllers\SearchController::class, 'show_eol'])->name("search_eol");
     Route::post('/search', [App\Http\Controllers\SearchController::class, 'handleForm'])->name("search.form");
 });

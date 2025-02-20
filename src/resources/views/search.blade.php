@@ -4,9 +4,16 @@
     @foreach ($errors->all() as $error)
         <div class="error-container">{{ $error }}</div>
     @endforeach
-    <h1 class="text-3xl">Search</h1>
+    @if ($search_by_eol)
+        <h1 class="text-3xl">Search (EOL)</h1>
+    @else
+        <h1 class="text-3xl">Search</h1>
+    @endif
     <form id="search-form" method="POST" action={{ route('search.form') }}>
         @csrf
+        @if ($search_by_eol)
+        <input type="hidden" name="is_eol" value="true">
+        @endif
         <div>
             <div class="mb-3">
                 <label for="search_by">Search By:</label>
