@@ -12,7 +12,7 @@
     <form id="search-form" method="POST" action={{ route('search.form') }}>
         @csrf
         @if ($search_by_eol)
-        <input type="hidden" name="is_eol" value="true">
+            <input type="hidden" name="is_eol" value="true">
         @endif
         <div>
             <div class="mb-3">
