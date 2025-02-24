@@ -13,7 +13,7 @@ class CompanyManager extends Component
 
     public function mount()
     {
-        $this->companies = AssetCompany::all();
+        $this->companies = AssetCompany::orderBy('name')->get();
     }
 
     public function addCompany()
@@ -35,7 +35,7 @@ class CompanyManager extends Component
             return;
         }
         AssetCompany::where('id', $id)->delete();
-        $this->companies = $this->companies->reject(fn ($company) => $company->id == $id);
+        $this->companies = $this->companies->reject(fn($company) => $company->id == $id);
     }
 
     public function render()
