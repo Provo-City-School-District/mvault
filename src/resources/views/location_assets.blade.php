@@ -25,7 +25,7 @@
                     <td class="border px-8 py-4">{{ $asset->room }}</td>
                     <td class="border px-8 py-4">{{ $asset->serial }}</td>
                     <td class="border px-8 py-4">{{ $asset->barcode }}</td>
-                    <td class="border px-8 py-4">{{ $asset->company }}</td>
+                    <td class="border px-8 py-4">{{ $asset->company_name }}</td>
                     <td class="border px-8 py-4">{{ $asset->model }}</td>
                     <td class="border px-8 py-4">{{ $asset->category_name }}</td>
                     <td class="border px-8 py-4">{{ $asset->purchase_date }}</td>
