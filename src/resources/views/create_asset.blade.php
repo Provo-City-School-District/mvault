@@ -41,18 +41,19 @@
                     </select>
 
                 </div>
-                <div class="grid grid-rows-3 gap-4 w-full">
-                    <div>
-                        <label for="serial">Serial:</label>
-                        <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1 w-full" type="text"
+                <div class="grid grid-cols-4 gap-4">
+
+                    <label for="serial">Serial:</label>
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="serial" name="serial" value="{{ old('serial') }}">
-                    </div>
+
                     @livewire('asset-company-autocomplete')
-                    <div>
-                        <label for="model">Model:</label>
-                        <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
+
+
+                    <label for="model">Model:</label>
+                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="model" name="model" value="{{ old('model') }}">
-                    </div>
+
                 </div>
             </div>
 
@@ -61,8 +62,8 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 <div class="grid grid-cols-4 gap-4">
                     <label for="site_number">Site:</label>
-                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-3"
-                        id="site_number" name="site_number">
+                    <select class="bg-gray-200 text-gray-700 border text-sm rounded-lg p-2.5 col-span-3" id="site_number"
+                        name="site_number">
                         <option disabled selected value> -- Select a location -- </option>
                         @foreach ($sites as $site)
                             <option value="{{ $site->site_number }}" @selected(old('site_number') == $site->site_number)>
