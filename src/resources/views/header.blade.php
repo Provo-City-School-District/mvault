@@ -8,6 +8,7 @@
             <div class="dropdown">
                 <a href="{{ route('search') }}" class="dropbtn {{ request()->is('search') || request()->is('search_eol') ? 'active' : '' }}">Search</a>
                 <div class="dropdown-content" style="left:0;">
+                    <a href="{{ route('search') }}">Search</a>
                     <a href="{{ route('search_eol') }}">Search EOL</a>
                 </div>
             </div>
