@@ -578,6 +578,10 @@ html {
   grid-column: 1 / -1;
 }
 
+.col-auto {
+  grid-column: auto;
+}
+
 .col-start-2 {
   grid-column-start: 2;
 }
@@ -629,6 +633,15 @@ html {
 
 .min-h-\[200px\] {
   min-height: 200px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.max-w-fit {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 
 .border-collapse {

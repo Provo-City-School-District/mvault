@@ -142,7 +142,7 @@
                 <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-4" type="number"
                     id="ticket_id" name="ticket_id">
 
-                <input type="submit" class="button" value="Add Work Done">
+                <input type="submit" class="button col-span-full max-w-fit" value="Add Work Done">
             </form>
         </div>
 
