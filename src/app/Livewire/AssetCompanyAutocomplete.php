@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire;
 
 use Livewire\Component;
@@ -14,9 +15,9 @@ class AssetCompanyAutocomplete extends Component
     {
         if (strlen($this->query) > 1) {
             $this->companies = AssetCompany::where('name', 'like', "%$this->query%")
-                                    ->orderBy('name')
-                                    ->limit(5)
-                                    ->get();
+                ->orderBy('name')
+                ->limit(5)
+                ->get();
             $this->showDropdown = true;
         } else {
             $this->showDropdown = false;
