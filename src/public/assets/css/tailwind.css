@@ -587,6 +587,10 @@ html {
   margin-bottom: 1rem;
 }
 
+.-mt-1 {
+  margin-top: -0.25rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -597,14 +601,6 @@ html {
 
 .mb-4 {
   margin-bottom: 1rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
-.-mt-1 {
-  margin-top: -0.25rem;
 }
 
 .flex {
