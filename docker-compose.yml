@@ -2,6 +2,7 @@ services:
   mvault-nginx:
     image: nginx:alpine
     container_name: mvault-nginx
+    restart: always
     ports:
       - "8096:80"
     volumes:
@@ -19,6 +20,7 @@ services:
       - ./db_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file: .env
+    restart: always
     ports:
       - "3340:3306"
     environment:
@@ -34,6 +36,7 @@ services:
     build:
       context: .
       dockerfile: ./php.Dockerfile
+    restart: always
     volumes:
       - ./src:/var/www/html
       - /var/www/html/vendor
@@ -47,6 +50,7 @@ services:
   mvault-phpmyadmin:
     image: phpmyadmin:latest
     container_name: mvault-phpmyadmin
+    restart: unless-stopped
     ports:
       - "8070:80"
     environment:
