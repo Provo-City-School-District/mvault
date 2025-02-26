@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Location;
 use App\Models\Asset;
 use App\Models\AssetCategory;
+use App\Models\ScheduledMaintenance;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -67,5 +68,29 @@ class EditAssetController extends Controller
         $asset->save();
 
         return redirect()->back()->with('status', 'Asset has been successfully updated');
+    }
+    public function scheduleMaintenance(Request $request, $assetId)
+    {
+        $request->validate([
+            'description' => 'required',
+            'date' => 'required|date',
+        ]);
+
+        $maintenance = new ScheduledMaintenance();
+        $maintenance->asset_id = $assetId;
+        $maintenance->description = $request->description;
+        $maintenance->date = $request->date;
+        $maintenance->interval = $request->interval;
+        $maintenance->user_id = Auth::id();
+        $maintenance->save();
+
+        return redirect()->back()->with('status', 'Maintenance has been successfully scheduled');
+    }
+    public function deleteMaintenance($id)
+    {
+        $maintenance = ScheduledMaintenance::findOrFail($id);
+        $maintenance->delete();
+
+        return redirect()->back()->with('status', 'Maintenance has been successfully deleted');
     }
 }

@@ -155,6 +155,60 @@
                 @endforeach
             </ul>
         </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <div class="grid">
+            <h2 class="col-span-full">Schedule Preventative Maintenance</h2>
+            <form method="POST" action="{{ route('maintenance.schedule', $asset->id) }}"
+                class="grid grid-cols-6 gap-4">
+                @csrf
+                <label for="maintenance_description" class="col-span-full">Description of Maintenance:</label>
+                <textarea class="bg-gray-200 text-gray-700 border border-black rounded min-h-[100px] p-3 col-span-full"
+                    id="maintenance_description" name="description"></textarea>
 
+                <label for="maintenance_date" class="col-span-2">Date of Maintenance:</label>
+                <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-4" type="date"
+                    id="maintenance_date" name="date">
+
+                <label for="maintenance_interval" class="col-span-2">Interval (days):</label>
+                <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-4" type="number"
+                    id="maintenance_interval" name="interval">
+                <input type="submit" class="button col-span-full max-w-fit" value="Schedule Maintenance">
+            </form>
+        </div>
+
+        <div>
+            <h2 class="col-span-full">Scheduled Maintenance</h2>
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2">Date Added</th>
+                        <th class="py-2">Intervals (days)</th>
+                        <th class="py-2">Next Date</th>
+                        <th class="py-2">Description</th>
+                        <th class="py-2">Scheduled By</th>
+                        <th class="py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($asset->scheduledMaintenance as $maintenance)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $maintenance->date }}</td>
+                            <td class="border px-4 py-2">{{ $maintenance->interval }}</td>
+                            <td class="border px-4 py-2">{{ $maintenance->nextDate() }}</td>
+                            <td class="border px-4 py-2">{{ $maintenance->description }}</td>
+                            <td class="border px-4 py-2">{{ $maintenance->user->name }}</td>
+                            <td class="border px-4 py-2">
+                                <form method="POST" action="{{ route('maintenance.delete', $maintenance->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="button bg-red-500 text-white">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
