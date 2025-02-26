@@ -155,4 +155,15 @@
         </div>
 
     </div>
+    @if (!$asset->eol)
+        <form method="POST" 
+            action="{{ route('edit_asset.eol') }}" 
+            class="grid grid-cols-6 gap-4"
+            onsubmit="return confirm('Are you sure you want to EOL this asset?');"
+            >
+            @csrf
+            <input type="hidden" name="id" value="{{ $asset->id }}">
+            <input type="submit" class="button col-span-full max-w-fit" value="End-of-Life Asset">
+        </form>
+    @endif
 @endsection

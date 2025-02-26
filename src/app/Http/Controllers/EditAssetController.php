@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 
 class EditAssetController extends Controller
 {
@@ -30,6 +32,19 @@ class EditAssetController extends Controller
         $sites = Location::all();
         $categories = AssetCategory::orderBy('display_name')->get();
         return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories]);
+    }
+
+    public function handleEOLAsset(Request $request)
+    {
+        $request->validate([
+            'id' => 'required'
+        ]);
+        $id = $request->id;
+        Log::info("eoling $id");
+        $asset = Asset::where('id', $request->id)->first();
+        $asset->eol = true;
+        $asset->save();
+        return redirect()->back()->with('status', 'Asset has been successfully marked as EOL');
     }
 
     public function handleForm(Request $request)
