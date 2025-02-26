@@ -52,7 +52,8 @@ class EditAssetController extends Controller
         $asset->serial = $request->get("serial");
         $asset->barcode = $request->get("barcode");
 
-        $asset->company = $request->get("company");
+        $matching_company = AssetCompany::where('name', $request->get("company"))->first();
+        $asset->company = $matching_company->id;
         $asset->model = $request->get("model");
 
         $site_number = $request->get("site_number");

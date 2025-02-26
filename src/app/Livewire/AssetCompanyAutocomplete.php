@@ -4,12 +4,19 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\AssetCompany;
+use Illuminate\Support\Facades\Log;
 
 class AssetCompanyAutocomplete extends Component
 {
     public $query = '';
     public $companies = [];
     public $showDropdown = false;
+
+    public function mount($defaultValue = null)
+    {
+        $companyName = AssetCompany::where('id', '=', $defaultValue)->pluck("name")->first();
+        $this->query = $companyName;
+    }
 
     public function updatedQuery()
     {

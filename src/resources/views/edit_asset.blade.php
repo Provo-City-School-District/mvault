@@ -54,9 +54,7 @@
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="serial" name="serial" value="{{ $asset->serial }}">
 
-                    <label for="company">Company:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
-                        id="company" name="company" value="{{ $asset->company }}">
+                    @livewire('asset-company-autocomplete', ['defaultValue' => $asset->company])
 
                     <label for="model">Model:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
