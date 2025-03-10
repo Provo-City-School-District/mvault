@@ -165,5 +165,15 @@
             <input type="hidden" name="id" value="{{ $asset->id }}">
             <input type="submit" class="button col-span-full max-w-fit" value="End-of-Life Asset">
         </form>
+    @else
+        <form method="POST" 
+            action="{{ route('edit_asset.un-eol') }}" 
+            class="grid grid-cols-6 gap-4"
+            onsubmit="return confirm('Are you sure you want to undo EOL?');"
+            >
+            @csrf
+            <input type="hidden" name="id" value="{{ $asset->id }}">
+            <input type="submit" class="button col-span-full max-w-fit" value="Undo End-of-Life Asset">
+        </form>
     @endif
 @endsection
