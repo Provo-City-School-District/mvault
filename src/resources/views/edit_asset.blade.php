@@ -182,7 +182,7 @@
             <table class="min-w-full bg-white">
                 <thead>
                     <tr>
-                        <th class="py-2">Date Added</th>
+                        <th class="py-2">Prior Completed</th>
                         <th class="py-2">Intervals (days)</th>
                         <th class="py-2">Next Date</th>
                         <th class="py-2">Description</th>
