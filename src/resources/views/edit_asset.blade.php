@@ -122,9 +122,9 @@
     </form>
     <p>Last validated:</p> {{ $asset->last_validated }}
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-10">
 
-        <div class="grid">
+        <div class="grid col-span-1 place-self-start">
             <h2 class="col-span-full">Add Work</h2>
             <form method="POST" action="{{ route('work_done.store', $asset->id) }}" class="grid grid-cols-6 gap-4">
                 @csrf
@@ -144,9 +144,9 @@
             </form>
         </div>
 
-        <div>
+        <div class="grid col-span-3">
             <h2 class="col-span-full">Previous Work</h2>
-            <table class="min-w-full bg-white">
+            <table class="min-w-full bg-white place-self-start">
                 <thead>
                     <tr>
                         <th class="py-2">Date</th>
@@ -171,8 +171,8 @@
             </table>
         </div>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-        <div class="grid">
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-10">
+        <div class="grid col-span-1 place-self-start">
             <h2 class="col-span-full">Schedule Preventative Maintenance</h2>
             <form method="POST" action="{{ route('maintenance.schedule', $asset->id) }}"
                 class="grid grid-cols-6 gap-4">
@@ -192,9 +192,9 @@
             </form>
         </div>
 
-        <div>
+        <div class="grid col-span-3">
             <h2 class="col-span-full">Scheduled Maintenance</h2>
-            <table class="min-w-full bg-white">
+            <table class="min-w-full bg-white place-self-start">
                 <thead>
                     <tr>
                         <th class="py-2">Prior Completed</th>
@@ -217,7 +217,7 @@
                                 <form method="POST" action="{{ route('maintenance.delete', $maintenance->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="button bg-red-500 text-white">Delete</button>
+                                    <button type="submit" class="button text-white">Delete</button>
                                 </form>
                             </td>
                         </tr>
