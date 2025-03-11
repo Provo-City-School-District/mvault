@@ -25,11 +25,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 #RUN chmod +x /var/www/html/tailwindcss
 
 RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    npm
+  software-properties-common \
+  npm
 RUN npm install npm@9.2 -g && \
-    npm install n -g && \
-    n latest
+  npm install n -g && \
+  n latest
 
 # Copy in Composer config
 COPY /src/composer.json /var/www/html/
