@@ -144,9 +144,9 @@
             </form>
         </div>
 
-        <div class="grid col-span-3">
+        <div class="grid col-span-3 place-self-start w-full">
             <h2 class="col-span-full">Previous Work</h2>
-            <table class="min-w-full bg-white place-self-start">
+            <table class="min-w-full bg-white">
                 <thead>
                     <tr>
                         <th class="py-2">Date</th>
@@ -192,9 +192,9 @@
             </form>
         </div>
 
-        <div class="grid col-span-3">
+        <div class="grid col-span-3 place-self-start w-full">
             <h2 class="col-span-full">Scheduled Maintenance</h2>
-            <table class="min-w-full bg-white place-self-start">
+            <table class="min-w-full bg-white">
                 <thead>
                     <tr>
                         <th class="py-2">Prior Completed</th>

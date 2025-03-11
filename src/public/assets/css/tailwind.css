@@ -635,6 +635,10 @@ html {
   min-height: 200px;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -666,6 +670,10 @@ html {
 
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.place-items-start {
+  place-items: start;
 }
 
 .gap-1 {
