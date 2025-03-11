@@ -1,7 +1,7 @@
 <div class="col-span-4 grid grid-cols-4 gap-1">
     <label for="company">Company:</label>
 
-    <input type="text" id="company" name="company" wire:model.live="query"
+    <input type="text" id="company" name="company" wire:model="value" wire:model.live="query"
         class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" placeholder="Search company...">
 
     @if ($showDropdown)

@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 
 class EditAssetController extends Controller
 {
@@ -34,6 +36,32 @@ class EditAssetController extends Controller
         return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories]);
     }
 
+    public function handleEOLAsset(Request $request)
+    {
+        $request->validate([
+            'id' => 'required'
+        ]);
+        $id = $request->id;
+        Log::info("eoling $id");
+        $asset = Asset::where('id', $request->id)->first();
+        $asset->eol = true;
+        $asset->save();
+        return redirect()->back()->with('status', 'Asset has been successfully marked as EOL');
+    }
+
+    public function handleUndoEOLAsset(Request $request)
+    {
+        $request->validate([
+            'id' => 'required'
+        ]);
+        $id = $request->id;
+        Log::info("eoling $id");
+        $asset = Asset::where('id', $request->id)->first();
+        $asset->eol = false;
+        $asset->save();
+        return redirect()->back()->with('status', 'Asset has been successfully marked as EOL');
+    }
+
     public function handleForm(Request $request)
     {
         $request->validate([
@@ -54,7 +82,8 @@ class EditAssetController extends Controller
         $asset->serial = $request->get("serial");
         $asset->barcode = $request->get("barcode");
 
-        $asset->company = $request->get("company");
+        $matching_company = AssetCompany::where('name', $request->get("company"))->first();
+        $asset->company = $matching_company->id;
         $asset->model = $request->get("model");
 
         $site_number = $request->get("site_number");

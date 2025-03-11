@@ -578,10 +578,6 @@ html {
   grid-column: 1 / -1;
 }
 
-.col-auto {
-  grid-column: auto;
-}
-
 .col-start-2 {
   grid-column-start: 2;
 }

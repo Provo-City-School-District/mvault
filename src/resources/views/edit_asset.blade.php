@@ -54,9 +54,7 @@
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
                         id="serial" name="serial" value="{{ $asset->serial }}">
 
-                    <label for="company">Company:</label>
-                    <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
-                        id="company" name="company" value="{{ $asset->company }}">
+                    @livewire('asset-company-autocomplete', ['defaultValue' => $asset->company])
 
                     <label for="model">Model:</label>
                     <input class="bg-gray-200 text-gray-700 border border-black rounded col-span-3 p-1" type="text"
@@ -211,4 +209,25 @@
             </table>
         </div>
     </div>
+    @if (!$asset->eol)
+        <form method="POST" 
+            action="{{ route('edit_asset.eol') }}" 
+            class="grid grid-cols-6 gap-4"
+            onsubmit="return confirm('Are you sure you want to EOL this asset?');"
+            >
+            @csrf
+            <input type="hidden" name="id" value="{{ $asset->id }}">
+            <input type="submit" class="button col-span-full max-w-fit" value="End-of-Life Asset">
+        </form>
+    @else
+        <form method="POST" 
+            action="{{ route('edit_asset.un-eol') }}" 
+            class="grid grid-cols-6 gap-4"
+            onsubmit="return confirm('Are you sure you want to undo EOL?');"
+            >
+            @csrf
+            <input type="hidden" name="id" value="{{ $asset->id }}">
+            <input type="submit" class="button col-span-full max-w-fit" value="Undo End-of-Life Asset">
+        </form>
+    @endif
 @endsection
