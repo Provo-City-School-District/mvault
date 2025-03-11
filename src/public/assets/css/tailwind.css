@@ -631,10 +631,6 @@ html {
   min-height: 200px;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .min-w-full {
   min-width: 100%;
 }
@@ -668,12 +664,20 @@ html {
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
+.place-items-start {
+  place-items: start;
+}
+
 .gap-1 {
   gap: 0.25rem;
 }
 
 .gap-4 {
   gap: 1rem;
+}
+
+.place-self-start {
+  place-self: start;
 }
 
 .overflow-y-auto {
