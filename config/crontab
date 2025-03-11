@@ -1,0 +1,6 @@
+# Set environment variables
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# Run the Laravel scheduler every minute
+* * * * * cd /var/www/html && php artisan schedule:run >> /dev/null 2>&1
