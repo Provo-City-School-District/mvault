@@ -146,12 +146,29 @@
 
         <div>
             <h2 class="col-span-full">Previous Work</h2>
-            <ul>
-                @foreach ($asset->workDone as $work)
-                    <li>{{ $work->date }}: {{ $work->description }} by {{ $work->user->name }} in ticket
-                        {{ $work->ticket_id }}</li>
-                @endforeach
-            </ul>
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2">Date</th>
+                        <th class="py-2">Description</th>
+                        <th class="py-2">By</th>
+                        <th class="py-2">Ticket</th>
+                        <th class="py-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($asset->workDone as $work)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $work->date }}</td>
+                            <td class="border px-4 py-2">{{ $work->description }}</td>
+                            <td class="border px-4 py-2">{{ $work->user->name }}</td>
+                            <td class="border px-4 py-2"><a
+                                    href="https://help-stage.provo.edu/controllers/tickets/edit_ticket.php?id={{ $work->ticket_id }}">{{ $work->ticket_id }}</a>
+                            </td>
+                            <td class="border px-4 py-2">{{ $work->ticket_status }}</td>
+                        </tr>
+                    @endforeach
+            </table>
         </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
