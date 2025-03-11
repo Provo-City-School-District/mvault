@@ -24,4 +24,10 @@ class WorkDoneController extends Controller
 
         return redirect()->route('edit_asset', $asset->id)->with('status', 'Work done added successfully!');
     }
+    public function edit(Asset $asset)
+    {
+        $asset->load('workDone.user');
+
+        return view('edit_asset', compact('asset'));
+    }
 }

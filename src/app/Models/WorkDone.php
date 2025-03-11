@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class WorkDone extends Model
 {
@@ -19,5 +20,12 @@ class WorkDone extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function getTicketStatusAttribute()
+    {
+        return DB::connection('help-db')
+            ->table('tickets')
+            ->where('id', $this->ticket_id)
+            ->value('status');
     }
 }
