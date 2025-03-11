@@ -6,6 +6,7 @@ use App\Models\Location;
 use App\Models\Asset;
 use App\Models\AssetCategory;
 use App\Models\ScheduledMaintenance;
+use App\Models\WorkDone;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -92,5 +93,42 @@ class EditAssetController extends Controller
         $maintenance->delete();
 
         return redirect()->back()->with('status', 'Maintenance has been successfully deleted');
+    }
+
+    public function processScheduledTasks()
+    {
+        // Fetch scheduled maintenance tasks that are due in chunks
+        ScheduledMaintenance::where('date', '<=', now())->chunk(100, function ($dueTasks) {
+            foreach ($dueTasks as $task) {
+                // Insert a ticket into the helpdesk system
+                $ticketId = DB::connection('help-db')->table('tickets')->insertGetId([
+                    'description' => $task->description,
+                    'created' => now(),
+                    'name' => 'Scheduled Maintenance For Asset: ' . $task->asset->name,
+                    'client' => 'donotreply',
+                    'last_updated' => now(),
+                    'department' => '1700',
+                    'location' => Location::find($task->asset->site)->site_number,
+                    'priority' => '10',
+                    'status' => 'open',
+                    'request_type_id' => 0,
+                ]);
+
+                // Add an entry into the work done table with the ticket number
+                WorkDone::create([
+                    'asset_id' => $task->asset_id,
+                    'description' => $task->description,
+                    'date' => now(),
+                    'ticket_id' => $ticketId,
+                    'user_id' => $task->user_id,
+                ]);
+
+                // Update the next scheduled date for the task
+                $task->date = $task->nextDate();
+                $task->save();
+            }
+        });
+
+        return response()->json(['status' => 'Scheduled tasks handled successfully']);
     }
 }
