@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Location;
 use App\Models\Asset;
 use App\Models\AssetCategory;
+use App\Models\AssetCompany;
 use App\Models\ScheduledMaintenance;
 use App\Models\WorkDone;
 
