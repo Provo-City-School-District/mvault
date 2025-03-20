@@ -2,5 +2,7 @@
 SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
+
+
 # Run the Laravel scheduler every minute
-* * * * * cd /var/www/html && php artisan schedule:run >> /var/log/cron.log 2>&1
+* * * * * cd /var/www/html && APP_URL=$APP_DOMAIN php artisan schedule:run >> /var/log/cron.log 2>&1
