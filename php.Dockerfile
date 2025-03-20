@@ -47,7 +47,7 @@ RUN npm install npm@9.2 -g && \
 COPY /src/composer.json /var/www/html/
 COPY /src/composer.lock /var/www/html/
 
-COPY .env /var/www/html/
+COPY .env /root/.env
 
 RUN composer install --no-interaction --no-ansi --no-scripts --no-progress --prefer-dist
 RUN npm install -D tailwindcss
