@@ -143,7 +143,7 @@ class EditAssetController extends Controller
                     'status' => 'open',
                     'request_type_id' => 0,
                 ]);
-    
+
                 // Add an entry into the work done table with the ticket number
                 WorkDone::create([
                     'asset_id' => $task->asset_id,
@@ -152,13 +152,14 @@ class EditAssetController extends Controller
                     'ticket_id' => $ticketId,
                     'user_id' => $task->user_id,
                 ]);
-    
+
                 // Update the next scheduled date for the task
                 $task->date = now(); // Set the date to the current date
                 $task->date = $task->nextDate(); // Calculate the next scheduled date
                 $task->save();
             }
         });
-    
+
         return response()->json(['status' => 'Scheduled tasks handled successfully']);
     }
+}
