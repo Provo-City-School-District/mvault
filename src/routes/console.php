@@ -4,7 +4,6 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Scheduling\Schedule;
 use App\Http\Controllers\EditAssetController;
-
 use Illuminate\Support\Facades\Log;
 
 Artisan::command('inspire', function () {
@@ -23,4 +22,4 @@ $schedule->call(function () {
     } catch (\Exception $e) {
         Log::error('Error in scheduled task', ['error' => $e->getMessage()]);
     }
-})->dailyAt('2:00');
+})->everyMinute();

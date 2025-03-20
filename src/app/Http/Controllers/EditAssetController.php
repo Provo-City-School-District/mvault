@@ -154,7 +154,8 @@ class EditAssetController extends Controller
                 ]);
 
                 // Update the next scheduled date for the task
-                $task->date = $task->nextDate();
+                $task->date = now(); // Set the date to the current date
+                $task->date = $task->nextDate(); // Calculate the next scheduled date
                 $task->save();
             }
         });
