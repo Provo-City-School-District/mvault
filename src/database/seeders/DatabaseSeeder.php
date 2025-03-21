@@ -54,11 +54,6 @@ class DatabaseSeeder extends Seeder
             ["510", "eSchool"]
         ];
         foreach ($location_data as $location) {
-            // Original code. Insert location
-            // DB::table('locations')->insert([
-            //     'site_number' => $location[0],
-            //     'display_name' => $location[1]
-            // ]); 
             // Insert location and get the inserted ID so we can seed test assets
             $locationId = DB::table('locations')->insertGetId([
                 'site_number' => $location[0], // Insert site_number
