@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             ["404", "Centennial Middle"],
             ["035", "Dixon"],
             ["555", "Slate Canyon"],
-            ["408", "Sunrise Middle"],
+            ["408", "Shoreline Middle"],
             ["560", "Oak Springs"],
             ["590", "Vantage Point"],
             ["610", "Central Utah Enterprises"],
