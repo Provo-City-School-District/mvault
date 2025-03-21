@@ -87,6 +87,8 @@ class DatabaseSeeder extends Seeder
             "Hardscape",
             "Playground",
             "Site Work",
+            "ADA",
+
             "Other"
         ];
 
