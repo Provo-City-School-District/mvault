@@ -12,7 +12,7 @@ class WorkDoneController extends Controller
     public function store(Request $request, Asset $asset)
     {
         $permissions = Auth::user()->permissions;
-        if (!$permissions->can_do_work)
+        if (!$permissions->can_do_work && !$permissions->admin)
             return redirect()->back()->with('status', 'User is not authorized to do this action');
         $request->validate([
             'description' => 'required|string',

@@ -18,6 +18,10 @@ class CreateAssetController extends Controller
 {
     public function show()
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->can_create_assets && !$permissions->admin)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
+
         $sites = Location::orderBy('display_name')->get();
         $categories = AssetCategory::orderBy('display_name')->get();
         return view('create_asset', ['sites' => $sites, 'categories' => $categories]);
@@ -25,6 +29,10 @@ class CreateAssetController extends Controller
 
     public function handleForm(Request $request)
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->can_create_assets && !$permissions->admin)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
+
         $request->validate([
             'asset_name' => 'required',
             'serial' => 'required',

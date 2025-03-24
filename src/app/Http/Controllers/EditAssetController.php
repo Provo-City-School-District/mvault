@@ -27,7 +27,7 @@ class EditAssetController extends Controller
         $asset->load(['workDone' => function ($query) {
             $query->orderBy('date', 'desc');
         }]);
-        return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories]);
+        return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories, 'permissions' => Auth::user()->permissions]);
     }
 
     public function show_barcode(Request $request)
@@ -35,7 +35,7 @@ class EditAssetController extends Controller
         $asset = Asset::where('barcode', $request->barcode)->first();
         $sites = Location::all();
         $categories = AssetCategory::orderBy('display_name')->get();
-        return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories]);
+        return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories, 'permissions' => Auth::user()->permissions]);
     }
 
     public function handleEOLAsset(Request $request)
@@ -73,7 +73,7 @@ class EditAssetController extends Controller
     public function handleForm(Request $request)
     {
         $permissions = Auth::user()->permissions;
-        if (!$permissions->can_schedule_work)
+        if (!$permissions->can_edit_assets && !$permissions->admin)
             return redirect()->back()->with('status', 'User is not authorized to do this action');
         $request->validate([
             'id' => 'required',
@@ -113,7 +113,7 @@ class EditAssetController extends Controller
     public function scheduleMaintenance(Request $request, $assetId)
     {
         $permissions = Auth::user()->permissions;
-        if (!$permissions->can_schedule_work)
+        if (!$permissions->can_schedule_work && !$permissions->admin)
             return redirect()->back()->with('status', 'User is not authorized to do this action');
 
         $request->validate([
@@ -134,7 +134,7 @@ class EditAssetController extends Controller
     public function deleteMaintenance($id)
     {
         $permissions = Auth::user()->permissions;
-        if (!$permissions->can_schedule_work)
+        if (!$permissions->can_schedule_work && !$permissions->admin)
             return redirect()->back()->with('status', 'User is not authorized to do this action');
 
         $maintenance = ScheduledMaintenance::findOrFail($id);
