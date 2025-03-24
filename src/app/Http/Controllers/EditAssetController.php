@@ -152,6 +152,7 @@ class EditAssetController extends Controller
                 $ticketId = DB::connection('help-db')->table('tickets')->insertGetId([
                     'description' => $task->description,
                     'created' => now(),
+                    'due_date' => now()->addDays(10),
                     'name' => 'Scheduled Maintenance For Asset: ' . $task->asset->name,
                     'client' => 'donotreply',
                     'last_updated' => now(),
