@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Permissions;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,14 @@ class GoogleLoginController extends Controller
         $user = User::where('email', $user_email)->first();
         if (!$user) {
             $user = User::create(['username' => $account_username, 'name' => $user_name, 'email' => $user_email]);
+        }
+
+        $user_id = $user->id;
+
+
+        $permissions = Permissions::where('user_id', $user_id)->first();
+        if (!$permissions) {
+            $permissions = Permissions::create(['user_id' => $user_id]);
         }
 
         Auth::login($user, true);

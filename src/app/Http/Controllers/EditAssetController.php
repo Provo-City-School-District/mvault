@@ -6,6 +6,7 @@ use App\Models\Location;
 use App\Models\Asset;
 use App\Models\AssetCategory;
 use App\Models\AssetCompany;
+use App\Models\Permissions;
 use App\Models\ScheduledMaintenance;
 use App\Models\WorkDone;
 
@@ -39,6 +40,9 @@ class EditAssetController extends Controller
 
     public function handleEOLAsset(Request $request)
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->admin)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
         $request->validate([
             'id' => 'required'
         ]);
@@ -52,6 +56,9 @@ class EditAssetController extends Controller
 
     public function handleUndoEOLAsset(Request $request)
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->admin)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
         $request->validate([
             'id' => 'required'
         ]);
@@ -65,6 +72,9 @@ class EditAssetController extends Controller
 
     public function handleForm(Request $request)
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->can_schedule_work)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
         $request->validate([
             'id' => 'required',
             'asset_name' => 'required',
@@ -102,6 +112,10 @@ class EditAssetController extends Controller
     }
     public function scheduleMaintenance(Request $request, $assetId)
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->can_schedule_work)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
+
         $request->validate([
             'description' => 'required',
             'date' => 'required|date',
@@ -119,6 +133,10 @@ class EditAssetController extends Controller
     }
     public function deleteMaintenance($id)
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->can_schedule_work)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
+
         $maintenance = ScheduledMaintenance::findOrFail($id);
         $maintenance->delete();
 

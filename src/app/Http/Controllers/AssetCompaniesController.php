@@ -16,6 +16,10 @@ class AssetCompaniesController extends Controller
 {
     public function show()
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->admin)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
+
         $companies = AssetCompany::orderBy('name')->get();
         return view('asset_companies', ['companies' => $companies]);
     }

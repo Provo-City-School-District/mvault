@@ -11,6 +11,10 @@ class AdminController extends Controller
 {
     public function show()
     {
+        $permissions = Auth::user()->permissions;
+        if (!$permissions->admin)
+            return redirect()->back()->with('status', 'User is not authorized to do this action');
+
         return view('admin');
     }
 }
