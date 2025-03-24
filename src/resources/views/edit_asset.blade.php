@@ -120,7 +120,7 @@
 
         </div>
     </form>
-    <p>Last validated:</p> {{ $asset->last_validated }}
+    {{-- <p>Last validated:</p> {{ $asset->last_validated }} --}}
 
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-10">
 
