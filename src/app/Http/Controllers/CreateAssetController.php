@@ -28,7 +28,7 @@ class CreateAssetController extends Controller
         $request->validate([
             'asset_name' => 'required',
             'serial' => 'required',
-            'company' => 'required',
+            'company' => 'required|exists:asset_companies,name',
             'category' => 'required',
             'model' => 'required',
             'site_number' => 'required',
@@ -44,6 +44,9 @@ class CreateAssetController extends Controller
         $asset->barcode = $request->get("barcode");
 
         $matching_company = AssetCompany::where('name', $request->get("company"))->first();
+        if (!$matching_company) {
+            return redirect()->back()->withErrors(['company' => 'Please select a valid company from the dropdown.']);
+        }
         $asset->company = $matching_company->id;
         $asset->model = $request->get("model");
 
@@ -54,7 +57,10 @@ class CreateAssetController extends Controller
         $asset->purchase_price = $request->get("purchase_price");
         $asset->purchase_date = $request->get("purchase_date");
         $asset->projected_eol_date = Asset::calculate_projected_eol_date(
-            $asset->purchase_date, (int)$request->get("projected_lifetime"), $request->get("projected_lifetime_units"));
+            $asset->purchase_date,
+            (int)$request->get("projected_lifetime"),
+            $request->get("projected_lifetime_units")
+        );
 
         $asset->description = $request->get("description");
         $asset->save();
