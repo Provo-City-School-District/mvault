@@ -146,7 +146,7 @@
 
         <div class="grid col-span-3 place-self-start w-full">
             <h2 class="col-span-full">Previous Work</h2>
-            <table class="min-w-full bg-white">
+            <table id="prevWork" class="min-w-full bg-white">
                 <thead>
                     <tr>
                         <th class="py-2">Date</th>
@@ -194,7 +194,7 @@
 
         <div class="grid col-span-3 place-self-start w-full">
             <h2 class="col-span-full">Scheduled Maintenance</h2>
-            <table class="min-w-full bg-white">
+            <table id='schedWork' class="min-w-full bg-white">
                 <thead>
                     <tr>
                         <th class="py-2">Prior Completed</th>
@@ -241,4 +241,18 @@
             <input type="submit" class="button col-span-full max-w-fit" value="Undo End-of-Life Asset">
         </form>
     @endif
+@endsection
+@section('config')
+    <script>
+        $(document).ready(function() {
+            $('#prevWork').DataTable({
+                pageLength: 10
+            });
+        });
+        $(document).ready(function() {
+            $('#schedWork').DataTable({
+                pageLength: 10
+            });
+        })
+    </script>
 @endsection

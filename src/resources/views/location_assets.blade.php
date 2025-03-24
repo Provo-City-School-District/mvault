@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="text-3xl mb-10">Assets at {{ $location_name }}</h1>
 
-    <table class="shadow-lg bg-white border-collapse">
+    <table id="assetsTable" class="shadow-lg bg-white border-collapse">
         <thead>
             <tr>
                 <th class="bg-blue-100 border px-8 py-4">Name</th>
@@ -33,4 +33,13 @@
             @endforeach
         </tbody>
     </table>
+@endsection
+@section('config')
+    <script>
+        $(document).ready(function() {
+            $('#assetsTable').DataTable({
+                pageLength: 50
+            });
+        });
+    </script>
 @endsection
