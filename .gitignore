@@ -6,3 +6,4 @@ src/public/info.php
 !.gitkeep
 node_modules/
 src/.phpunit.result.cache
+logs/*

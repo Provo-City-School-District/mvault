@@ -41,6 +41,7 @@ services:
       - ./src:/var/www/html
       - /var/www/html/vendor
       - ./session:/var/php/sessions/
+      - ./logs:/var/www/html/storage/logs
     env_file: .env
     ports:
       - "9000:80"
