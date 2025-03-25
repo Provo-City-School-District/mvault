@@ -1,7 +1,5 @@
 # PCSD Maintenance Inventory Vault.
 
-Requires `php artisan migrate --seed` to get started on first container build
-
 ## Clear View Caches
 If you are experiencing issues with the views not updating, run the following command to clear the view caches:
 ```bash
@@ -17,3 +15,7 @@ Inside your app container, run the following command to install the necessary de
 ```bash
     npx tailwindcss -i ./resources/css/input.css -o ./public/assets/css/tailwind.css --watch
 ```
+
+## Notes
+- The `php artisan migrate --seed` command will create the necessary tables and seed the database with the necessary data. Required for first build to get started.
+- need to push www-data ownership through src/ folder on first build to correct permissions.
