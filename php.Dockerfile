@@ -55,5 +55,8 @@ RUN npm install -D tailwindcss
 # Copy supervisor configuration
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# correct permissions
+RUN chown -R www-data:www-data /var/www/html
+
 # Start supervisor
 CMD ["/usr/bin/supervisord"]
