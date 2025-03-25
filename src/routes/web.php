@@ -14,6 +14,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'show'])->name("admin");
 
     Route::get('/asset_companies', [App\Http\Controllers\AssetCompaniesController::class, 'show'])->name("asset_companies");
+    Route::get('/all_users', [App\Http\Controllers\AllUsersController::class, 'show'])->name("all_users");
+    Route::get('/manage_user/{id}', [App\Http\Controllers\ManageUserController::class, 'show'])->name("manage_user");
+    Route::get('/update_user', [App\Http\Controllers\ManageUserController::class, 'updateUser'])->name("update_user");
 
     Route::get('/create_asset', [App\Http\Controllers\CreateAssetController::class, 'show'])->name("create_asset");
     Route::post('/create_asset', [App\Http\Controllers\CreateAssetController::class, 'handleForm']);

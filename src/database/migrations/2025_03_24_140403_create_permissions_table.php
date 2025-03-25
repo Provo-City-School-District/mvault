@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('users');
             $table->boolean('admin')->default(0);
             $table->boolean('can_create_assets')->default(0);
             $table->boolean('can_edit_assets')->default(0);

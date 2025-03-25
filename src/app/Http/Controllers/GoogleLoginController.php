@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+use Carbon\Carbon;
 
 class GoogleLoginController extends Controller
 {
@@ -46,13 +47,13 @@ class GoogleLoginController extends Controller
         }
 
         $user_id = $user->id;
-
-
-        $permissions = Permissions::where('user_id', $user_id)->first();
+        $permissions = Permissions::where('id', $user_id)->first();
         if (!$permissions) {
-            $permissions = Permissions::create(['user_id' => $user_id]);
+            $permissions = Permissions::create(['id' => $user_id]);
         }
 
+        $user->last_login = Carbon::now()->toDateTimeString();
+        $user->save();
         Auth::login($user, true);
 
         return redirect()->intended('profile');
