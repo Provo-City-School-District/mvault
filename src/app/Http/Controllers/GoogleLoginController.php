@@ -11,6 +11,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class GoogleLoginController extends Controller
 {
@@ -36,9 +37,9 @@ class GoogleLoginController extends Controller
 
         $domain_name = $domain[1];
 
-        if ($domain_name != "provo.edu") {
+        if ($domain_name != "provo.edu" || !GoogleLoginController::userAllowed($account_username)) {
             Log::info("User with email $user_email attempted to login... rejected");
-            return redirect('/');
+            return redirect('/')->withErrors(['login' => 'User is not allowed to access this system']);
         }
 
         $user = User::where('email', $user_email)->first();
@@ -57,5 +58,9 @@ class GoogleLoginController extends Controller
         Auth::login($user, true);
 
         return redirect()->intended('profile');
+    }
+
+    public static function userAllowed(string $username) {
+        return DB::table('allowed_users')->where('username', $username)->exists();
     }
 }
