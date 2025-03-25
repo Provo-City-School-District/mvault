@@ -20,7 +20,10 @@ class LocationAssetsController extends Controller
         $location_data = Location::where('site_number', $location_number)->first();
 
         $location_name = $location_data["display_name"];
-        $assets = Asset::where('site', $location_data["id"])->get();
+        $assets = Asset::where([ 
+            ['site', '=', $location_data["id"]],
+            ['eol', '=', '0']
+        ])->get();
 
         // Fetch all categories
         $categoryIds = $assets->pluck('category')->unique();
