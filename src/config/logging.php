@@ -94,14 +94,15 @@ return [
             'processors' => [PsrLogMessageProcessor::class],
         ],
         'graylog' => [
-            'driver' => 'monolog',
+            'driver' => 'custom',
+            'via' => \Hedii\LaravelGelfLogger\GelfLoggerFactory::class,
             'level' => env('LOG_LEVEL', 'debug'),
-            'handler' => Monolog\Handler\SocketHandler::class,
-            'handler_with' => [
-                'connectionString' => 'udp://' . env('GRAYLOG_HOST') . ':' . env('GRAYLOG_PORT'),
-            ],
+            'transport' => 'udp',       // Use UDP for GELF transport
+            'host' => env('GRAYLOG_HOST'),
+            'port' => env('GRAYLOG_PORT'),
             'processors' => [
-                PsrLogMessageProcessor::class,
+                \Hedii\LaravelGelfLogger\Processors\NullStringProcessor::class,
+                \Hedii\LaravelGelfLogger\Processors\RenameIdFieldProcessor::class,
             ],
         ],
         'stdout' => [
