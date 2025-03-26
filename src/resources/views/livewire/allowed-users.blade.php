@@ -7,7 +7,7 @@
     @error('name')
         <span class="text-red-500">{{ $message }}</span>
     @enderror
-    <h2 class="text-3xl my-4">Add User</h1>
+    <h2 class="text-3xl my-4">Add Allowed User</h1>
         <div>
             <div><input type="text" wire:model="username" class="border px-4 py-2"
                     placeholder="username (no @provo.edu)"></div>
