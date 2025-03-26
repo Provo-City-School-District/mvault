@@ -100,6 +100,9 @@ return [
             'transport' => 'udp',       // Use UDP for GELF transport
             'host' => env('GRAYLOG_HOST'),
             'port' => env('GRAYLOG_PORT'),
+            'context' => [
+                'environment' => env('APP_ENV', 'production'),
+            ],
             'processors' => [
                 \Hedii\LaravelGelfLogger\Processors\NullStringProcessor::class,
                 \Hedii\LaravelGelfLogger\Processors\RenameIdFieldProcessor::class,

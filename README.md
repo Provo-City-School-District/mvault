@@ -19,16 +19,7 @@ Inside your app container, run the following command to install the necessary de
 ## Adding Logging Events
 To add logging events, use the following code snippet:
 ```php
-    Log::debug('This is a debug message.', [
-        'application_name' => 'mvault',
-        'environment' => env('APP_ENV', 'production'),
-    ]);
-
-    Log::info('This is a direct test log for laravel.log.', [
-        'application_name' => 'mvault',
-        'environment' => env('APP_ENV', 'production'),
-    ]);
-
+   Log::info('This is a direct test log for laravel.log.');
 ```
 potential log levels are: debug, info, warning, error, critical, alert, emergency
 ## Notes
