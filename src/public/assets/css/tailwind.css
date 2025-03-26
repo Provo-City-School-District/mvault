@@ -586,6 +586,10 @@ html {
   grid-column-start: 2;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -605,6 +609,10 @@ html {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .flex {
@@ -670,10 +678,6 @@ html {
 
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.place-items-start {
-  place-items: start;
 }
 
 .gap-1 {

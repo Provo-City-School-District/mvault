@@ -22,6 +22,8 @@
         @endforeach
     </tbody>
 </table>
+@livewire('allowed-users')
+
 @endsection
 @section('config')
     <script>
