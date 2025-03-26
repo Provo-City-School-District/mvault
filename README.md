@@ -16,6 +16,21 @@ Inside your app container, run the following command to install the necessary de
     npx tailwindcss -i ./resources/css/input.css -o ./public/assets/css/tailwind.css --watch
 ```
 
+## Adding Logging Events
+To add logging events, use the following code snippet:
+```php
+    Log::debug('This is a debug message.', [
+        'application_name' => 'mvault',
+        'environment' => env('APP_ENV', 'production'),
+    ]);
+
+    Log::info('This is a direct test log for laravel.log.', [
+        'application_name' => 'mvault',
+        'environment' => env('APP_ENV', 'production'),
+    ]);
+
+```
+potential log levels are: debug, info, warning, error, critical, alert, emergency
 ## Notes
 - The `php artisan migrate --seed` command will create the necessary tables and seed the database with the necessary data. Required for first build to get started.
 - need to push www-data ownership through src/ folder on first build to correct permissions.
