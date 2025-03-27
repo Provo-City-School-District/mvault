@@ -8,6 +8,10 @@
                 <th>Email</th>
                 <th>Name</th>
                 <th>Is Admin</th>
+                <th>Can Create Assets</th>
+                <th>Can Edit Assets</th>
+                <th>Can Schedule Work</th>
+                <th>Can Do Work</th>
                 <th>Last Login</th>
             </tr>
         </thead>
@@ -17,6 +21,10 @@
                     <td><a href="{{ route('manage_user', ['id' => $user->id]) }}">{{ $user->email }}</a></td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->permissions->admin ? 'Yes' : 'No' }}</td>
+                    <td>{{ $user->permissions->can_create_assets ? 'Yes' : 'No' }}</td>
+                    <td>{{ $user->permissions->can_edit_assets ? 'Yes' : 'No' }}</td>
+                    <td>{{ $user->permissions->can_schedule_work ? 'Yes' : 'No' }}</td>
+                    <td>{{ $user->permissions->can_do_work ? 'Yes' : 'No' }}</td>
                     <td>{{ $user->last_login }}</td>
                 </tr>
             @endforeach
