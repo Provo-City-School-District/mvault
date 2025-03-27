@@ -21,7 +21,7 @@ class ManageUserController extends Controller
             return redirect("/")->with('status', 'User is not authorized to do this action');
 
         $user = User::where('id', $request->id)->first();
-        $permissions = Auth::user()->permissions;
+        $permissions = Permissions::where('id', $user->id)->first();
         return view('manage_user', ['user' => $user, 'permissions' => $permissions]);
     }
 
@@ -40,7 +40,7 @@ class ManageUserController extends Controller
         $permissions = Permissions::where('id', $request->id)->first();
 
         $user->name = $request->name;
-        
+
 
         $permissions->admin = $request->has("is_admin");
         $permissions->can_create_assets = $request->has('can_create_assets');
