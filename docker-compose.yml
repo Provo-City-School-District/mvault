@@ -12,6 +12,11 @@ services:
       - mvault-app
     networks:
       - mvault-network
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://localhost:514"
+        tag: "mvault-nginx"
   #Database Service
   mvault-db:
     image: mariadb
@@ -30,6 +35,11 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
       - mvault-network
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://localhost:514"
+        tag: "mvault-db"
   # Application Service
   mvault-app:
     container_name: mvault-app
@@ -47,6 +57,11 @@ services:
       - "9000:80"
     networks:
       - mvault-network
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://localhost:514"
+        tag: "mvault-app"
   #mvault-phpmyadmin Service
   mvault-phpmyadmin:
     image: phpmyadmin:latest
@@ -61,6 +76,11 @@ services:
       - mvault-db
     networks:
       - mvault-network
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://localhost:514"
+        tag: "mvault-phpmyadmin"
 networks:
   mvault-network:
     driver: bridge
