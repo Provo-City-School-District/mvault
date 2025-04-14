@@ -78,6 +78,7 @@ class EditAssetController extends Controller
             'details' => json_encode([
                 'original_eol_status' => $originalEOLStatus,
                 'updated_eol_status' => $asset->eol,
+                'asset_id' => $asset->id,
             ]),
         ]);
 
@@ -112,6 +113,7 @@ class EditAssetController extends Controller
             'details' => json_encode([
                 'original_eol_status' => $originalEOLStatus,
                 'updated_eol_status' => $asset->eol,
+                'asset_id' => $asset->id,
             ]),
         ]);
 
@@ -183,6 +185,7 @@ class EditAssetController extends Controller
 
         // Log the changes
         if (!empty($changes)) {
+            $changes['asset_id'] = $asset->id;
             AssetLog::create([
                 'user_id' => Auth::id(),
                 'asset_id' => $asset->id,
@@ -224,6 +227,7 @@ class EditAssetController extends Controller
             'action' => 'Created Scheduled Maintenance',
             'details' => json_encode([
                 'description' => $maintenance->description,
+                'asset_id' => $maintenance->asset_id,
                 'date' => $maintenance->date,
                 'interval' => $maintenance->interval,
             ]),
@@ -252,6 +256,7 @@ class EditAssetController extends Controller
             'details' => json_encode([
                 'description' => $maintenance->description,
                 'date' => $maintenance->date,
+                'asset_id' => $maintenance->asset_id,
                 'interval' => $maintenance->interval,
             ]),
         ]);

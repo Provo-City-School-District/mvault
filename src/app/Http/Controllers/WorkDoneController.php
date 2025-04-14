@@ -39,6 +39,7 @@ class WorkDoneController extends Controller
             'action' => 'Created Work Done',
             'details' => json_encode([
                 'description' => $workDone->description,
+                'asset_id' => $asset->id,
                 'date' => $workDone->date,
                 'ticket_id' => $workDone->ticket_id,
             ]),

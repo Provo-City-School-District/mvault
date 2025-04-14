@@ -107,6 +107,7 @@ class ManageUserController extends Controller
 
         // Log the changes
         if (!empty($changes)) {
+            $changes['user_id'] = $user->id; // Add the ID of the user being edited to changes
             AssetLog::create([
                 'user_id' => Auth::id(),
                 'action' => 'Updated User',
