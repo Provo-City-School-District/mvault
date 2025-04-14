@@ -9,6 +9,7 @@ use App\Models\AssetCompany;
 use App\Models\Permissions;
 use App\Models\ScheduledMaintenance;
 use App\Models\WorkDone;
+use App\Models\AssetLog;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -19,6 +20,11 @@ use Illuminate\Support\Facades\Log;
 
 class EditAssetController extends Controller
 {
+
+
+
+
+
     public function show(Request $request)
     {
         $asset = Asset::where('id', $request->asset_id)->first();
@@ -30,6 +36,10 @@ class EditAssetController extends Controller
         return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories, 'permissions' => Auth::user()->permissions]);
     }
 
+
+
+
+
     public function show_barcode(Request $request)
     {
         $asset = Asset::where('barcode', $request->barcode)->first();
@@ -37,6 +47,10 @@ class EditAssetController extends Controller
         $categories = AssetCategory::orderBy('display_name')->get();
         return view('edit_asset', ['asset' => $asset, 'sites' => $sites, 'categories' => $categories, 'permissions' => Auth::user()->permissions]);
     }
+
+
+
+
 
     public function handleEOLAsset(Request $request)
     {
@@ -49,10 +63,31 @@ class EditAssetController extends Controller
         $id = $request->id;
         Log::info("eoling $id");
         $asset = Asset::where('id', $request->id)->first();
+
+        // Default original EOL status to false if not set
+        $originalEOLStatus = $asset->eol ?? false;
+
         $asset->eol = true;
         $asset->save();
+
+        // Log the EOL action
+        AssetLog::create([
+            'user_id' => Auth::id(),
+            'asset_id' => $asset->id,
+            'action' => 'Marked Asset as EOL',
+            'details' => json_encode([
+                'original_eol_status' => $originalEOLStatus,
+                'updated_eol_status' => $asset->eol,
+                'asset_id' => $asset->id,
+            ]),
+        ]);
+
         return redirect()->back()->with('status', 'Asset has been successfully marked as EOL');
     }
+
+
+
+
 
     public function handleUndoEOLAsset(Request $request)
     {
@@ -65,10 +100,29 @@ class EditAssetController extends Controller
         $id = $request->id;
         Log::info("eoling $id");
         $asset = Asset::where('id', $request->id)->first();
+        $originalEOLStatus = $asset->eol;
+
         $asset->eol = false;
         $asset->save();
+
+        // Log the Undo EOL action
+        AssetLog::create([
+            'user_id' => Auth::id(),
+            'asset_id' => $asset->id,
+            'action' => 'Unmarked Asset as EOL',
+            'details' => json_encode([
+                'original_eol_status' => $originalEOLStatus,
+                'updated_eol_status' => $asset->eol,
+                'asset_id' => $asset->id,
+            ]),
+        ]);
+
         return redirect()->back()->with('status', 'Asset has been successfully marked as EOL');
     }
+
+
+
+
 
     public function handleForm(Request $request)
     {
@@ -89,6 +143,11 @@ class EditAssetController extends Controller
         ]);
 
         $asset = Asset::where('id', $request->id)->first();
+
+        // Store original values before making changes
+        $originalAsset = $asset->getOriginal();
+
+        // Update asset fields
         $asset->name = $request->get("asset_name");
         $asset->serial = $request->get("serial");
         $asset->barcode = $request->get("barcode");
@@ -108,8 +167,40 @@ class EditAssetController extends Controller
 
         $asset->save();
 
+        // Get changes
+        $changes = [];
+        foreach ($asset->getAttributes() as $field => $newValue) {
+            if (in_array($field, ['created_at', 'updated_at'])) {
+                continue; // Skip timestamps
+            }
+
+            $originalValue = $originalAsset[$field] ?? null;
+            if ($originalValue != $newValue) { // Log only changed fields
+                $changes[$field] = [
+                    'original' => $originalValue,
+                    'updated' => $newValue
+                ];
+            }
+        }
+
+        // Log the changes
+        if (!empty($changes)) {
+            $changes['asset_id'] = $asset->id;
+            AssetLog::create([
+                'user_id' => Auth::id(),
+                'asset_id' => $asset->id,
+                'action' => 'Updated Asset',
+                'details' => json_encode($changes)
+            ]);
+        }
+
         return redirect()->back()->with('status', 'Asset has been successfully updated');
     }
+
+
+
+
+
     public function scheduleMaintenance(Request $request, $assetId)
     {
         $permissions = Auth::user()->permissions;
@@ -129,8 +220,26 @@ class EditAssetController extends Controller
         $maintenance->user_id = Auth::id();
         $maintenance->save();
 
+        // Log the scheduling of maintenance
+        AssetLog::create([
+            'user_id' => Auth::id(),
+            'asset_id' => $assetId,
+            'action' => 'Created Scheduled Maintenance',
+            'details' => json_encode([
+                'description' => $maintenance->description,
+                'asset_id' => $maintenance->asset_id,
+                'date' => $maintenance->date,
+                'interval' => $maintenance->interval,
+            ]),
+        ]);
+
         return redirect()->back()->with('status', 'Maintenance has been successfully scheduled');
     }
+
+
+
+
+
     public function deleteMaintenance($id)
     {
         $permissions = Auth::user()->permissions;
@@ -138,10 +247,28 @@ class EditAssetController extends Controller
             return redirect()->back()->with('status', 'User is not authorized to do this action');
 
         $maintenance = ScheduledMaintenance::findOrFail($id);
+
+        // Log the deletion of maintenance
+        AssetLog::create([
+            'user_id' => Auth::id(),
+            'asset_id' => $maintenance->asset_id,
+            'action' => 'Deleted Scheduled Maintenance',
+            'details' => json_encode([
+                'description' => $maintenance->description,
+                'date' => $maintenance->date,
+                'asset_id' => $maintenance->asset_id,
+                'interval' => $maintenance->interval,
+            ]),
+        ]);
+
         $maintenance->delete();
 
         return redirect()->back()->with('status', 'Maintenance has been successfully deleted');
     }
+
+
+
+
 
     public function processScheduledTasks()
     {

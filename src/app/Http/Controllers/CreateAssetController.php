@@ -6,6 +6,7 @@ use App\Models\Asset;
 use App\Models\Location;
 use App\Models\AssetCategory;
 use App\Models\AssetCompany;
+use App\Models\AssetLog;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\DB;
 
 class CreateAssetController extends Controller
 {
+
+
+
+
+
     public function show()
     {
         $permissions = Auth::user()->permissions;
@@ -26,6 +32,10 @@ class CreateAssetController extends Controller
         $categories = AssetCategory::orderBy('display_name')->get();
         return view('create_asset', ['sites' => $sites, 'categories' => $categories]);
     }
+
+
+
+
 
     public function handleForm(Request $request)
     {
@@ -72,6 +82,28 @@ class CreateAssetController extends Controller
 
         $asset->description = $request->get("description");
         $asset->save();
+
+
+        // Log the creation of the asset
+        AssetLog::create([
+            'user_id' => Auth::id(),
+            'asset_id' => $asset->id,
+            'action' => 'Created Asset',
+            'details' => json_encode([
+                'name' => $asset->name,
+                'serial' => $asset->serial,
+                'barcode' => $asset->barcode,
+                'company' => $matching_company->name,
+                'model' => $asset->model,
+                'category' => $asset->category,
+                'site' => $asset->site,
+                'room' => $asset->room,
+                'purchase_price' => $asset->purchase_price,
+                'purchase_date' => $asset->purchase_date,
+                'projected_eol_date' => $asset->projected_eol_date,
+                'description' => $asset->description,
+            ]),
+        ]);
 
         return redirect()->back()->with('status', 'Asset has been successfully created');
     }
