@@ -7,8 +7,18 @@ a {
 }
 
 @font-face {
+    font-family: "Campton-Light";
+    src: url('/assets/fonts/CamptonLight/font.woff2');
+}
+
+@font-face {
     font-family: "Campton-Medium";
     src: url('/assets/fonts/CamptonMedium/font.woff2');
+}
+
+@font-face {
+    font-family: "Campton-Bold";
+    src: url('/assets/fonts/CamptonBold.woff');
 }
 
 @layer base {
@@ -150,6 +160,10 @@ button:hover,
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
+}
+
+strong {
+    font-family: "Campton-Bold";
 }
 
 /*==========================================
