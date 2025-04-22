@@ -19,7 +19,7 @@ services:
         tag: "mvault-nginx"
   #Database Service
   mvault-db:
-    image: mariadb
+    image: mariadb:11.7.2
     container_name: mvault-db
     volumes:
       - ./db_data:/var/lib/mysql
