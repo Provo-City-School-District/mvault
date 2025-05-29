@@ -35,6 +35,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
       - mvault-network
+      - dbmanage-network
     logging:
       driver: syslog
       options:
@@ -63,24 +64,27 @@ services:
         syslog-address: "udp://localhost:514"
         tag: "mvault-app"
   #mvault-phpmyadmin Service
-  mvault-phpmyadmin:
-    image: phpmyadmin:latest
-    container_name: mvault-phpmyadmin
-    restart: unless-stopped
-    ports:
-      - "8070:80"
-    environment:
-      PMA_HOST: mvault-db
-      UPLOAD_LIMIT: 300M
-    depends_on:
-      - mvault-db
-    networks:
-      - mvault-network
-    logging:
-      driver: syslog
-      options:
-        syslog-address: "udp://localhost:514"
-        tag: "mvault-phpmyadmin"
+  # mvault-phpmyadmin:
+  #   image: phpmyadmin:latest
+  #   container_name: mvault-phpmyadmin
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8070:80"
+  #   environment:
+  #     PMA_HOST: mvault-db
+  #     UPLOAD_LIMIT: 300M
+  #   depends_on:
+  #     - mvault-db
+  #   networks:
+  #     - mvault-network
+  #   logging:
+  #     driver: syslog
+  #     options:
+  #       syslog-address: "udp://localhost:514"
+  #       tag: "mvault-phpmyadmin"
 networks:
   mvault-network:
     driver: bridge
+  dbmanage-network:
+    driver: bridge
+    external: true
